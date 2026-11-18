@@ -81,117 +81,39 @@ function makeBloggerSnippet(platformId,siteKey){
 //<![CDATA[
 (function(){
   "use strict";
-  var CFG = {
-    platformId: ${JSON.stringify(platformId)},
-    siteKey: ${JSON.stringify(siteKey)},
-    endpoint: ${JSON.stringify(BRIDGE)},
-    publishableKey: ${JSON.stringify(AQX_KEY)}
+  var CFG={
+    platformId:${JSON.stringify(platformId)},
+    siteKey:${JSON.stringify(siteKey)},
+    endpoint:${JSON.stringify(BRIDGE)},
+    publishableKey:${JSON.stringify(AQX_KEY)}
   };
-  var STORE = "aqx_blogger_sync_" + CFG.platformId;
-  var now = Date.now();
-  var last = 0;
-  try { last = Number(localStorage.getItem(STORE) || 0); } catch(e) {}
-  if (last && now - last < 6 * 60 * 60 * 1000) return;
-  try { localStorage.setItem(STORE, String(now)); } catch(e) {}
-
-  function getFeed(startIndex){
-    return new Promise(function(resolve,reject){
-      var callback = "AQXBloggerFeed_" + Date.now() + "_" + Math.random().toString(36).slice(2);
-      var script = document.createElement("script");
-      var done = false;
-      var timer = setTimeout(function(){finish(new Error("Blogger feed timeout"));},15000);
-      function finish(error,data){
-        if(done)return; done=true; clearTimeout(timer);
-        try{delete window[callback];}catch(e){window[callback]=undefined;}
-        if(script.parentNode)script.parentNode.removeChild(script);
-        if(error)reject(error);else resolve(data);
-      }
-      window[callback]=function(data){finish(null,data);};
-      var url = new URL("/feeds/posts/default", location.origin);
-      url.searchParams.set("alt","json-in-script");
-      url.searchParams.set("max-results","50");
-      url.searchParams.set("start-index",String(startIndex));
-      url.searchParams.set("callback",callback);
-      script.async=true; script.src=url.toString();
-      script.onerror=function(){finish(new Error("Unable to read Blogger feed"));};
-      document.head.appendChild(script);
-    });
-  }
-
-  function plainText(html){
-    var box=document.createElement("div"); box.innerHTML=html||"";
-    return (box.textContent||box.innerText||"").replace(/\\s+/g," ").trim().slice(0,1200);
-  }
-  function mapEntry(entry){
-    var links=entry.link||[];
-    var alternate=links.find(function(x){return x.rel==="alternate" && x.href;});
-    if(!alternate)return null;
-    var content=(entry.summary&&entry.summary.$t)||(entry.content&&entry.content.$t)||"";
-    var image="";
-    var media=entry.media$thumbnail;
-    if(media&&media.url)image=media.url;
-    if(!image){
-      var match=content.match(/<img[^>]+src=["']([^"']+)/i);
-      if(match)image=match[1];
-    }
-    var author=entry.author&&entry.author[0]&&entry.author[0].name&&entry.author[0].name.$t;
-    return {
-      entry_id:(entry.id&&entry.id.$t)||alternate.href,
-      url:alternate.href,
-      title:(entry.title&&entry.title.$t)||"",
-      description:plainText(content),
-      thumbnail_url:image,
-      author_name:author||"",
-      published_at:(entry.published&&entry.published.$t)||null,
-      updated_at:(entry.updated&&entry.updated.$t)||null
-    };
-  }
-
-  async function sendBatch(posts){
-    if(!posts.length)return;
-    var response=await fetch(CFG.endpoint,{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "apikey":CFG.publishableKey,
-        "Authorization":"Bearer "+CFG.publishableKey
-      },
-      body:JSON.stringify({
-        action:"ingest_posts",
-        platform_id:CFG.platformId,
-        site_key:CFG.siteKey,
-        posts:posts
-      })
-    });
-    var result=await response.json().catch(function(){return {};});
-    if(!response.ok||!result.ok)throw new Error(result.error||"AQX ingestion failed");
-  }
-
-  async function sync(){
-    var initial=!last;
-    var maxPages=initial?20:2;
-    var total=0;
-    for(var page=0;page<maxPages;page++){
-      var data=await getFeed(page*50+1);
-      var entries=data&&data.feed&&data.feed.entry||[];
-      if(!entries.length)break;
-      var posts=entries.map(mapEntry).filter(Boolean);
-      await sendBatch(posts);
-      total+=posts.length;
-      if(entries.length<50)break;
-    }
+  var STORE="aqx_blogger_sync_"+CFG.platformId;
+  var now=Date.now(),last=0;
+  try{last=Number(localStorage.getItem(STORE)||0);}catch(e){}
+  if(last&&now-last<6*60*60*1000)return;
+  fetch(CFG.endpoint,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "apikey":CFG.publishableKey,
+      "Authorization":"Bearer "+CFG.publishableKey
+    },
+    body:JSON.stringify({
+      action:"sync_blog",
+      platform_id:CFG.platformId,
+      site_key:CFG.siteKey
+    })
+  }).then(async function(response){
+    var data=await response.json().catch(function(){return {};});
+    if(!response.ok||!data.ok)throw new Error(data.error||"AQX Blogger sync failed");
     try{localStorage.setItem(STORE,String(Date.now()));}catch(e){}
-    if(window.console)console.info("AQX Blogger sync complete:",total,"posts");
-  }
-
-  if(document.readyState==="loading"){
-    document.addEventListener("DOMContentLoaded",function(){sync().catch(function(e){console.warn("AQX Blogger sync:",e);try{localStorage.removeItem(STORE);}catch(x){}});},{once:true});
-  }else{
-    sync().catch(function(e){console.warn("AQX Blogger sync:",e);try{localStorage.removeItem(STORE);}catch(x){}});
-  }
+    if(window.console)console.info("AQX Blogger:",data.skipped?data.message:("تمت مزامنة "+(data.posts_saved||0)+" مقال"));
+  }).catch(function(error){
+    if(window.console)console.warn("AQX Blogger sync:",error);
+  });
 })();
 //]]>
-<\/script>`;
+<\\/script>`;
 }
 
 form.addEventListener("submit",async event=>{
