@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071523">
+<title>إضافة مدونة Blogger إلى AQX</title>
+<style>
+:root{color-scheme:dark;--bg:#071523;--panel:#10283c;--gold:#d8b56d;--text:#f4f1e9;--muted:#a9b7c4;--line:rgba(216,181,109,.24);--danger:#ffaaa0;--ok:#9bd8b2}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#17344b 0,transparent 38%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh;padding:28px 16px}
+main{width:min(760px,100%);margin:0 auto}.brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}.mark{width:46px;height:46px;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;color:var(--gold);font-size:27px}.brand b{display:block;font-size:19px}.brand small{color:var(--muted)}
+.card{background:rgba(16,40,60,.94);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 22px 70px #0005}
+h1{font-size:25px;margin:0 0 8px}p{color:var(--muted);line-height:1.8;margin:0 0 22px}.field{margin:16px 0}.field label{display:block;margin-bottom:8px;font-weight:700}.field input,.field textarea{width:100%;background:#081a2a;border:1px solid var(--line);border-radius:12px;padding:13px 14px;color:var(--text);font:inherit;outline:none}.field input:focus,.field textarea:focus{border-color:var(--gold)}.field textarea{min-height:90px;resize:vertical}
+button{border:0;border-radius:12px;padding:13px 18px;font:inherit;font-weight:700;cursor:pointer}.primary{background:var(--gold);color:#152333}.secondary{background:#1a3a52;color:var(--text);border:1px solid var(--line)}button:disabled{opacity:.55;cursor:wait}
+.notice{padding:13px 15px;border-radius:12px;background:#081a2a;border:1px solid var(--line);margin:16px 0;line-height:1.8;white-space:pre-wrap}.notice.error{color:var(--danger);border-color:#a85c58}.notice.success{color:var(--ok);border-color:#42795b}
+[hidden]{display:none!important}.result{margin-top:22px;border-top:1px solid var(--line);padding-top:20px}.id{direction:ltr;text-align:left;word-break:break-all;background:#081a2a;padding:12px;border-radius:10px;font:13px ui-monospace,monospace;color:var(--gold)}.code{width:100%;min-height:330px;direction:ltr;text-align:left;white-space:pre;overflow:auto;background:#06111d;color:#d7e3ef;border:1px solid var(--line);border-radius:12px;padding:14px;font:12px/1.6 ui-monospace,Consolas,monospace}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.hint{font-size:13px;margin-top:14px}.steps{padding-right:20px;color:var(--muted);line-height:2}
+</style>
+</head>
+<body>
+<main>
+ <div class="brand"><div class="mark">◇</div><div><b>نبراس AQX</b><small>تسجيل مدونات Blogger</small></div></div>
+ <section class="card">
+  <h1>إضافة موقع Blogger جديد</h1>
+  <p>سجّل مدونتك مرة واحدة، وسيُنشأ لها معرّف منصة مستقل ومفتاح ربط خاص بها. بعد التسجيل ستحصل على كود جاهز لإضافته إلى قالب Blogger لجمع روابط المقالات المنشورة وإرسالها إلى قاعدة AQX.</p>
+  <div id="authNotice" class="notice">جارٍ التحقق من جلسة إدارة AQX…</div>
+  <form id="addForm" hidden>
+   <div class="field"><label for="blogName">اسم المدونة</label><input id="blogName" maxlength="120" required placeholder="مثال: مدونة المعرفة الرقمية"></div>
+   <div class="field"><label for="blogUrl">رابط المدونة الأساسي</label><input id="blogUrl" type="url" required placeholder="https://example.blogspot.com"></div>
+   <div class="field"><label for="blogDescription">وصف المدونة (اختياري)</label><textarea id="blogDescription" maxlength="500" placeholder="نبذة مختصرة عن محتوى المدونة"></textarea></div>
+   <button class="primary" id="submitBtn" type="submit">تسجيل المدونة وإنشاء كود الربط</button>
+  </form>
+  <div id="status" class="notice" hidden></div>
+  <section id="result" class="result" hidden>
+   <div class="notice success">تم تسجيل المدونة بنجاح كمنصة جديدة في قاعدة AQX.</div>
+   <h3>معرّف المنصة (UUID)</h3>
+   <div id="platformId" class="id"></div>
+   <div class="actions"><button class="secondary" id="copyId" type="button">نسخ معرّف المنصة</button></div>
+   <h3 style="margin-top:24px">كود الربط لقالب Blogger</h3>
+   <p class="hint">انسخ الكود كاملًا، ثم افتح Blogger ← المظهر ← تعديل HTML، وضعه مباشرة قبل وسم &lt;/body&gt; ثم احفظ القالب.</p>
+   <textarea id="templateCode" class="code" readonly spellcheck="false"></textarea>
+   <div class="actions"><button class="primary" id="copyCode" type="button">نسخ كود القالب كاملًا</button></div>
+   <p class="hint">احتفظ بنسخة من الكود. مفتاح الربط يُعرض مرة واحدة عند التسجيل، ولا يمكن استعادته من قاعدة البيانات بصورته الأصلية.</p>
+  </section>
+ </section>
+</main>
+<script type="module">
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
+
+const CENTRAL_URL = "https://fkiokwwztbyztleeuwks.supabase.co";
+const CENTRAL_KEY = "sb_publishable_4DCXObCqPUoNnI8ANOo8dA_nRAg0y5_";
+const AQX_URL = "https://kkmvixuztywgqjbwxyvk.supabase.co";
+const AQX_KEY = "sb_publishable_qFdDHua0CEsCD-h63wtv-g_3LTHVrMC";
+const BRIDGE = AQX_URL + "/functions/v1/aqx-blogger-bridge";
+const authClient = createClient(CENTRAL_URL, CENTRAL_KEY, {auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const $ = id => document.getElementById(id);
+let adminSession = null;
+const authNotice = $("authNotice");
+const form = $("addForm");
+
+async function checkSession(){
+  try{
+    const {data,error}=await authClient.auth.getSession();
+    if(error) throw error;
+    adminSession=data.session;
+    if(!adminSession?.access_token){
+      authNotice.className="notice error";
+      authNotice.textContent="لم أجد جلسة دخول لحساب AQX المركزي على هذا النطاق. سجّل الدخول إلى لوحة AQX المركزية أولًا، ثم افتح صفحة الإضافة مرة أخرى.";
+      return;
+    }
+    authNotice.className="notice success";
+    authNotice.textContent="تم العثور على جلسة الحساب المركزي. سيتم التحقق من صلاحية الإدارة عند التسجيل.";
+    form.hidden=false;
+  }catch(error){
+    authNotice.className="notice error";
+    authNotice.textContent="تعذر قراءة جلسة الحساب المركزي: "+(error?.message||"خطأ غير معروف");
+  }
+}
+
+function makeBloggerSnippet(platformId,siteKey){
+ return `<script type="text/javascript">
+//<![CDATA[
+(function(){
+  "use strict";
+  var CFG = {
+    platformId: ${JSON.stringify(platformId)},
+    siteKey: ${JSON.stringify(siteKey)},
+    endpoint: ${JSON.stringify(BRIDGE)},
+    publishableKey: ${JSON.stringify(AQX_KEY)}
+  };
+  var STORE = "aqx_blogger_sync_" + CFG.platformId;
+  var now = Date.now();
+  var last = 0;
+  try { last = Number(localStorage.getItem(STORE) || 0); } catch(e) {}
+  if (last && now - last < 6 * 60 * 60 * 1000) return;
+  try { localStorage.setItem(STORE, String(now)); } catch(e) {}
+
+  function getFeed(startIndex){
+    return new Promise(function(resolve,reject){
+      var callback = "AQXBloggerFeed_" + Date.now() + "_" + Math.random().toString(36).slice(2);
+      var script = document.createElement("script");
+      var done = false;
+      var timer = setTimeout(function(){finish(new Error("Blogger feed timeout"));},15000);
+      function finish(error,data){
+        if(done)return; done=true; clearTimeout(timer);
+        try{delete window[callback];}catch(e){window[callback]=undefined;}
+        if(script.parentNode)script.parentNode.removeChild(script);
+        if(error)reject(error);else resolve(data);
+      }
+      window[callback]=function(data){finish(null,data);};
+      var url = new URL("/feeds/posts/default", location.origin);
+      url.searchParams.set("alt","json-in-script");
+      url.searchParams.set("max-results","50");
+      url.searchParams.set("start-index",String(startIndex));
+      url.searchParams.set("callback",callback);
+      script.async=true; script.src=url.toString();
+      script.onerror=function(){finish(new Error("Unable to read Blogger feed"));};
+      document.head.appendChild(script);
+    });
+  }
+
+  function plainText(html){
+    var box=document.createElement("div"); box.innerHTML=html||"";
+    return (box.textContent||box.innerText||"").replace(/\\s+/g," ").trim().slice(0,1200);
+  }
+  function mapEntry(entry){
+    var links=entry.link||[];
+    var alternate=links.find(function(x){return x.rel==="alternate" && x.href;});
+    if(!alternate)return null;
+    var content=(entry.summary&&entry.summary.$t)||(entry.content&&entry.content.$t)||"";
+    var image="";
+    var media=entry.media$thumbnail;
+    if(media&&media.url)image=media.url;
+    if(!image){
+      var match=content.match(/<img[^>]+src=["']([^"']+)/i);
+      if(match)image=match[1];
+    }
+    var author=entry.author&&entry.author[0]&&entry.author[0].name&&entry.author[0].name.$t;
+    return {
+      entry_id:(entry.id&&entry.id.$t)||alternate.href,
+      url:alternate.href,
+      title:(entry.title&&entry.title.$t)||"",
+      description:plainText(content),
+      thumbnail_url:image,
+      author_name:author||"",
+      published_at:(entry.published&&entry.published.$t)||null,
+      updated_at:(entry.updated&&entry.updated.$t)||null
+    };
+  }
+
+  async function sendBatch(posts){
+    if(!posts.length)return;
+    var response=await fetch(CFG.endpoint,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "apikey":CFG.publishableKey,
+        "Authorization":"Bearer "+CFG.publishableKey
+      },
+      body:JSON.stringify({
+        action:"ingest_posts",
+        platform_id:CFG.platformId,
+        site_key:CFG.siteKey,
+        posts:posts
+      })
+    });
+    var result=await response.json().catch(function(){return {};});
+    if(!response.ok||!result.ok)throw new Error(result.error||"AQX ingestion failed");
+  }
+
+  async function sync(){
+    var initial=!last;
+    var maxPages=initial?20:2;
+    var total=0;
+    for(var page=0;page<maxPages;page++){
+      var data=await getFeed(page*50+1);
+      var entries=data&&data.feed&&data.feed.entry||[];
+      if(!entries.length)break;
+      var posts=entries.map(mapEntry).filter(Boolean);
+      await sendBatch(posts);
+      total+=posts.length;
+      if(entries.length<50)break;
+    }
+    try{localStorage.setItem(STORE,String(Date.now()));}catch(e){}
+    if(window.console)console.info("AQX Blogger sync complete:",total,"posts");
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",function(){sync().catch(function(e){console.warn("AQX Blogger sync:",e);try{localStorage.removeItem(STORE);}catch(x){}});},{once:true});
+  }else{
+    sync().catch(function(e){console.warn("AQX Blogger sync:",e);try{localStorage.removeItem(STORE);}catch(x){}});
+  }
+})();
+//]]>
+<\/script>`;
+}
+
+form.addEventListener("submit",async event=>{
+  event.preventDefault();
+  if(!adminSession?.access_token){$("status").hidden=false;$("status").className="notice error";$("status").textContent="جلسة الإدارة غير متاحة. أعد تحميل الصفحة بعد تسجيل الدخول.";return;}
+  const button=$("submitBtn");button.disabled=true;button.textContent="جارٍ تسجيل المدونة…";
+  $("status").hidden=true;
+  $("result").hidden=true;
+  try{
+    const response=await fetch(BRIDGE,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "apikey":AQX_KEY,
+        "Authorization":"Bearer "+adminSession.access_token
+      },
+      body:JSON.stringify({
+        action:"create_platform",
+        blog_name:$("blogName").value.trim(),
+        blog_url:$("blogUrl").value.trim(),
+        description:$("blogDescription").value.trim()
+      })
+    });
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok||!data.ok){
+      if(data.duplicate&&data.platform_id)throw new Error(data.error+" — معرّف المنصة الموجودة: "+data.platform_id);
+      throw new Error(data.error||"تعذر تسجيل المدونة");
+    }
+    $("platformId").textContent=data.platform.id;
+    $("templateCode").value=makeBloggerSnippet(data.platform.id,data.site_key);
+    $("result").hidden=false;
+    $("status").hidden=false;$("status").className="notice success";$("status").textContent="تمت الإضافة بنجاح. المنصة: "+data.platform.name;
+    $("result").scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(error){
+    $("status").hidden=false;$("status").className="notice error";$("status").textContent=error?.message||"حدث خطأ غير متوقع";
+  }finally{
+    button.disabled=false;button.textContent="تسجيل المدونة وإنشاء كود الربط";
+  }
+});
+$("copyId").addEventListener("click",async()=>{await navigator.clipboard.writeText($("platformId").textContent);$("copyId").textContent="تم النسخ ✓";});
+$("copyCode").addEventListener("click",async()=>{await navigator.clipboard.writeText($("templateCode").value);$("copyCode").textContent="تم نسخ الكود ✓";});
+checkSession();
+</script>
+</body>
+</html>
