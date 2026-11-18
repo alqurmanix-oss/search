@@ -615,7 +615,7 @@ function renderSearchTermList(id,rows,live=false){
   if(!Array.isArray(rows)||!rows.length){const li=document.createElement("li");li.textContent="لا توجد بيانات مسجلة";list.append(li);return;}
   rows.slice(0,8).forEach(row=>{const li=document.createElement("li");const q=safeText(row.query||row.search||row.query_text,"عبارة غير متاحة");li.textContent=q+(live&&row.last_searched_at?" · "+new Date(row.last_searched_at).toLocaleTimeString("ar-EG"):"");list.append(li);});
 }
-async async function loadPublicStats(){
+async function loadPublicStats(){
   try{
     const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey},cache:"no-store"});
     const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");
