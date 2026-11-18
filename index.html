@@ -467,7 +467,7 @@ async function loadRandomFeed(){
     homeFeedState.hasMore=!!data.has_more;
     if(!homeFeedState.hasMore)finishRandomFeed();
     else if(!added&&rows.length===0)finishRandomFeed();
-    else if(!homeFeedState.observer||!homeFeedState.observer.takeRecords)setupRandomFeedObserver();
+    else if(homeFeedState.hasMore)setupRandomFeedObserver();
   }catch(error){
     toast(error.message||"تعذر تحميل المزيد من المحتوى");
     if(homeFeedState.observer)homeFeedState.observer.disconnect();
