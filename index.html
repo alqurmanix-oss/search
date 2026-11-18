@@ -467,8 +467,10 @@ async function loadRandomFeed(){
     homeFeedState.hasMore=!!data.has_more;
     if(!homeFeedState.hasMore)finishRandomFeed();
     else if(!added&&rows.length===0)finishRandomFeed();
+    else if(!homeFeedState.observer||!homeFeedState.observer.takeRecords)setupRandomFeedObserver();
   }catch(error){
     toast(error.message||"تعذر تحميل المزيد من المحتوى");
+    if(homeFeedState.observer)homeFeedState.observer.disconnect();
     $("randomFeedFallback").hidden=false;
   }finally{
     homeFeedState.loadingRandom=false;$("randomFeedLoading").hidden=true;
@@ -479,6 +481,7 @@ function setupRandomFeedObserver(){
   if(!("IntersectionObserver" in window)){
     $("randomFeedFallback").hidden=false;return;
   }
+  $("randomFeedFallback").hidden=true;
   homeFeedState.observer=new IntersectionObserver(entries=>{
     if(entries.some(x=>x.isIntersecting))loadRandomFeed();
   },{root:null,rootMargin:"900px 0px",threshold:0});
