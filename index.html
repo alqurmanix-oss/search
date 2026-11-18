@@ -439,7 +439,9 @@ function appendHomeFeedItem(item,list){
   list.append(createResult(item));
   homeFeedState.feedCardsRendered++;
   const interval=8;
-  if(homeFeedState.feedCardsRendered%interval===0&&homeFeedState.externalTags.length&&location.hostname==="search.alqurmanix.com"){
+  const firstPlacement=homeFeedState.feedCardsRendered===1;
+  const regularPlacement=(homeFeedState.feedCardsRendered-1)%interval===0;
+  if((firstPlacement||regularPlacement)&&homeFeedState.externalTags.length&&location.hostname==="search.alqurmanix.com"){
     const tag=homeFeedState.externalTags[homeFeedState.externalTagIndex%homeFeedState.externalTags.length];
     homeFeedState.externalTagIndex++;
     const ad=renderExternalTag(tag);
