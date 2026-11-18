@@ -109,6 +109,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 .panel-section{padding:46px 0 20px;scroll-margin-top:24px}.panel-card{background:linear-gradient(145deg,rgba(17,42,62,.9),rgba(9,27,43,.92));border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}.panel-title{font-size:22px;margin:0 0 8px;color:#f5e7c8}.panel-muted{font-size:12px;color:#9eafbb;line-height:1.9;margin:0 0 18px}.rating-summary{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.rating-big{font-size:42px;font-weight:900;color:var(--gold2)}.stars{color:#e9c779;letter-spacing:2px}.review-list{display:grid;gap:12px}.review-item{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px;background:rgba(255,255,255,.025)}.review-item h4{margin:0 0 7px;color:#f0dfb8;font-size:13px}.review-item p{margin:7px 0;color:#b5c1ca;font-size:12px;line-height:1.9}.review-meta{font-size:10px;color:#8396a4}.review-form{display:grid;gap:11px}.review-form input,.review-form textarea{width:100%;border:1px solid rgba(216,181,109,.23);background:#0a1e2e;color:#f6f0e4;border-radius:11px;padding:12px;font:inherit;font-size:12px}.review-form textarea{min-height:100px;resize:vertical}.rating-pick{display:flex;gap:7px;direction:ltr;justify-content:flex-end}.rating-pick button{background:transparent;border:1px solid var(--line);border-radius:9px;color:#71818c;padding:7px 10px;font-size:19px}.rating-pick button.selected{color:#f0c96f;background:rgba(216,181,109,.1)}.primary-btn{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#f0d79a,#c69d50);color:#172638;font-weight:900}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat-box{padding:17px;border:1px solid rgba(216,181,109,.16);border-radius:14px;background:rgba(255,255,255,.025)}.stat-box b{display:block;color:var(--gold2);font-size:22px;margin-bottom:5px}.stat-box span{font-size:10px;color:#9eafbb}.fineprint{font-size:10px;color:#8293a0;line-height:1.8;margin-top:12px}
 @media(max-width:900px){body{padding-right:0}.sidebar{transform:translateX(105%);transition:transform .25s;width:min(290px,84vw)}.sidebar.open{transform:translateX(0)}.drawer-shade.open{display:block}.menu{display:block}.navlinks{display:none}.navcta{display:none}.stat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:901px){.menu{display:none}}
+.query-analytics{margin-top:24px}.query-analytics h3{font-size:16px;color:var(--gold2)}.query-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.query-columns>div{border:1px solid rgba(216,181,109,.14);border-radius:13px;padding:12px;background:rgba(255,255,255,.02)}.query-columns h4{font-size:11px;color:#d9c38f;margin:0 0 8px}.query-columns ol{margin:0;padding:0 20px 0 0;color:#b8c5ce;font-size:11px;line-height:2}.query-columns li{overflow-wrap:anywhere}.external-ad-frame{display:block;width:100%;min-height:100px;border:0;border-radius:12px;background:rgba(255,255,255,.02);margin:10px 0}.external-ad-wrap{width:100%;max-width:100%;overflow:hidden;margin:12px auto}.external-ad-wrap[data-size="728x90"]{max-width:728px;min-height:90px}.external-ad-wrap[data-size="300x250"]{max-width:300px;min-height:250px}.external-ad-wrap[data-size="320x50"]{max-width:320px;min-height:60px}@media(max-width:760px){.query-columns{grid-template-columns:1fr 1fr}}
 
 </style>
 </head>
@@ -181,7 +182,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </div>
  <div class="panel-card"><h3 class="panel-title" style="font-size:17px">أحدث المراجعات المعتمدة</h3><div class="review-list" id="reviewList"><div class="review-meta">جارٍ تحميل المراجعات...</div></div></div>
 </section>
-<section class="wrap panel-section" id="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">نعرض هنا مؤشرات موثوقة بعد استبعاد الزيارات الآلية والأحداث غير المعتمدة. بيانات الزوار التفصيلية وتقارير الحملات تبقى ضمن لوحة AQX الإدارية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات بشرية مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><p class="fineprint" id="statsUpdated">لا يتم احتساب زيارات البوتات أو أحداث الإعلانات المعلقة للمراجعة ضمن الأرقام المعتمدة.</p></div></section>
+<section class="wrap panel-section" id="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">مؤشرات عامة من سجلات AQX المتاحة. استبعاد الروبوتات يعتمد على آليات الكشف المسجلة ولا يمثل ضمانًا مطلقًا لمنع كل الزيارات الآلية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><div class="query-analytics"><h3>عبارات البحث الأكثر استخدامًا</h3><div class="query-columns"><div><h4>مباشر · آخر 5 دقائق</h4><ol id="liveSearchTerms"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 24 ساعة</h4><ol id="topSearchToday"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 7 أيام</h4><ol id="topSearchWeek"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 30 يومًا</h4><ol id="topSearchMonth"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 365 يومًا</h4><ol id="topSearchYear"><li>لا توجد بيانات بعد</li></ol></div></div></div><p class="fineprint" id="statsUpdated">في انتظار تحميل الإحصائيات.</p></div></section>
 <section class="wrap panel-section" id="ad-info"><div class="panel-card"><h2 class="panel-title">الإعلانات على نبراس</h2><p class="panel-muted">تُعرض الإعلانات وفق ترتيب شبكة AQX: الحملات المباشرة المؤهلة أولًا، ثم إعلانات AQX، ثم الإعلان الاحتياطي عند عدم توفر إعلان مؤهل. أحداث الإعلان تمر عبر التحقق ومراجعة مكافحة الاحتيال قبل اعتمادها إحصائيًا.</p></div></section>
 <section class="wrap panel-section" id="report"><div class="panel-card"><h2 class="panel-title">الإبلاغ عن مشكلة</h2><p class="panel-muted">لو واجهت مشكلة في البحث أو إعلانًا مضللًا أو محتوى غير مناسب، أرسل بلاغك من خلال <a href="https://alqurmanix.com" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:underline">بوابة AQX</a> مع وصف المشكلة والرابط إن وجد.</p></div></section>
 
@@ -279,6 +280,39 @@ function createAdCard(ad){
   }
   return card;
 }
+function renderExternalTag(tag){
+  if(location.hostname!=="search.alqurmanix.com"||tag.allowed_host!=="search.alqurmanix.com"||tag.is_enabled===false)return null;
+  const code=typeof tag.script_code==="string"?tag.script_code:"";
+  if(!code||code.length>12000)return null;
+  const wrap=document.createElement("div");wrap.className="external-ad-wrap";
+  const key=String(tag.placement_key||"").toLowerCase();
+  let size="";
+  if(key.includes("728")||key.includes("banner"))size="728x90";
+  else if(key.includes("300")||key.includes("250"))size="300x250";
+  else if(key.includes("320")||key.includes("mobile"))size="320x50";
+  wrap.dataset.size=size;
+  const frame=document.createElement("iframe");frame.className="external-ad-frame";
+  frame.title="إعلان خارجي";frame.loading="lazy";frame.referrerPolicy="strict-origin";
+  frame.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox");
+  const height=size==="300x250"?260:size==="728x90"?110:size==="320x50"?80:180;
+  frame.style.height=height+"px";
+  const safeCode=code.replace(/<\\/script/gi,"<\\\\/script");
+  frame.srcdoc="<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden}body{display:flex;justify-content:center;align-items:flex-start;min-height:1px}</style></head><body>"+safeCode+"</body></html>";
+  wrap.append(frame);return wrap;
+}
+function renderExternalAds(data){
+  if(location.hostname!=="search.alqurmanix.com")return;
+  const tags=Array.isArray(data.external_tags)?data.external_tags:[];
+  const slots={top:$("adTop"),inline:$("adInline"),bottom:$("adBottom")};
+  tags.forEach(tag=>{
+    const key=String(tag.placement_key||"").toLowerCase();
+    let target=slots.inline;
+    if(key.includes("custom-1")||key.includes("728")||key.includes("top"))target=slots.top;
+    else if(key.includes("custom-2")||key.includes("bottom")||key.includes("monetag-2"))target=slots.bottom;
+    else if(key.includes("monetag-3")||key.includes("320")||key.includes("mobile"))target=slots.bottom;
+    const frame=renderExternalTag(tag);if(frame)target.append(frame);
+  });
+}
 function renderAds(data){
   const slots={top:$("adTop"),inline:$("adInline"),bottom:$("adBottom")};
   Object.values(slots).forEach(el=>el.replaceChildren());
@@ -293,6 +327,7 @@ function renderAds(data){
     const anchor=results.children[Math.min(4,Math.max(0,results.children.length-1))];
     if(anchor&&results.children.length>1)anchor.after(inlineWrap);else results.append(inlineWrap);
   }
+  renderExternalAds(data);
 }
 function sendAdEvent(ad,eventType){
   if(ad.source_kind==="aqx_fallback"||!ad.request_id||!ad.ad_id)return;
@@ -389,10 +424,31 @@ let selectedRating=0;
 $("ratingPick").addEventListener("click",e=>{const b=e.target.closest("button[data-rating]");if(!b)return;selectedRating=Number(b.dataset.rating);$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",Number(x.dataset.rating)<=selectedRating));});
 async function loadReviews(){try{const u=AQX_CONFIG.reviewFeedEndpoint+"?slug="+encodeURIComponent(AQX_CONFIG.linkSlug);const r=await fetch(u,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر تحميل التقييمات");const p=d.profile||{};const avg=Number(p.average_rating||0),count=Number(p.approved_reviews||0);$("ratingAverage").textContent=count?avg.toFixed(2):"—";$("ratingStars").textContent="★".repeat(Math.round(avg))+"☆".repeat(5-Math.round(avg));$("ratingCount").textContent=count+" مراجعة معتمدة";const list=$("reviewList");list.replaceChildren();(d.reviews||[]).forEach(x=>{const card=document.createElement("article");card.className="review-item";const h=document.createElement("h4");h.textContent=(x.review_title||"مراجعة زائر")+" · "+"★".repeat(Number(x.rating||0));const p=document.createElement("p");p.textContent=x.review_text||"";const m=document.createElement("div");m.className="review-meta";m.textContent=(x.reviewer_name||"زائر AQX")+" · "+new Date(x.created_at).toLocaleDateString("ar-EG");card.append(h,p,m);if(x.author_reply){const reply=document.createElement("p");reply.textContent="رد AQX: "+x.author_reply;card.append(reply);}list.append(card);});if(!list.children.length){const e=document.createElement("div");e.className="review-meta";e.textContent="لا توجد مراجعات معتمدة حتى الآن. كن أول من يشارك رأيه.";list.append(e);}}catch(e){$("ratingCount").textContent="تعذر تحميل التقييمات الآن";$("reviewList").textContent="تعذر تحميل المراجعات. حاول لاحقًا.";}}
 $("reviewForm").addEventListener("submit",async e=>{e.preventDefault();const msg=$("reviewMessage");if(!selectedRating){msg.textContent="اختر عدد النجوم أولاً.";return;}const btn=$("reviewSubmit");btn.disabled=true;msg.textContent="جارٍ إرسال المراجعة...";try{const r=await fetch(AQX_CONFIG.reviewSubmitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,rating:selectedRating,reviewer_name:$("reviewName").value.trim(),review_title:$("reviewTitle").value.trim(),review_text:$("reviewText").value.trim(),website:$("reviewWebsite").value})});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر إرسال المراجعة");msg.textContent=d.message||"تم استلام مراجعتك وستُراجع قبل النشر.";$("reviewForm").reset();selectedRating=0;$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.remove("selected"));}catch(err){msg.textContent=err.message||"تعذر الإرسال الآن.";}finally{btn.disabled=false;}});
-async function loadPublicStats(){try{const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");$("statVisits").textContent=Number(d.visits||0).toLocaleString("ar-EG");$("statSearches").textContent=d.searches==null?"—":Number(d.searches).toLocaleString("ar-EG");$("statAdImpressions").textContent=Number(d.ad_impressions||0).toLocaleString("ar-EG");$("statAdClicks").textContent=Number(d.ad_clicks||0).toLocaleString("ar-EG");$("statsUpdated").textContent="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");}catch{$("statsUpdated").textContent="الإحصائيات العامة ستظهر بعد تفعيل واجهة التقارير الآمنة.";}}
+function renderSearchTermList(id,rows,live=false){
+  const list=$(id);if(!list)return;list.replaceChildren();
+  if(!Array.isArray(rows)||!rows.length){const li=document.createElement("li");li.textContent="لا توجد بيانات مسجلة";list.append(li);return;}
+  rows.slice(0,8).forEach(row=>{const li=document.createElement("li");const q=safeText(row.query||row.search||row.query_text,"عبارة غير متاحة");li.textContent=q+(live&&row.last_searched_at?" · "+new Date(row.last_searched_at).toLocaleTimeString("ar-EG"):"");list.append(li);});
+}
+async function loadPublicStats(){
+  try{
+    const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey},cache:"no-store"});
+    const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");
+    $("statVisits").textContent=Number(d.visits||0).toLocaleString("ar-EG");
+    $("statSearches").textContent=d.searches==null?"—":Number(d.searches).toLocaleString("ar-EG");
+    $("statAdImpressions").textContent=Number(d.ad_impressions||0).toLocaleString("ar-EG");
+    $("statAdClicks").textContent=Number(d.ad_clicks||0).toLocaleString("ar-EG");
+    const terms=d.top_searches||{};
+    renderSearchTermList("liveSearchTerms",terms.live,true);
+    renderSearchTermList("topSearchToday",terms.today);
+    renderSearchTermList("topSearchWeek",terms.week);
+    renderSearchTermList("topSearchMonth",terms.month);
+    renderSearchTermList("topSearchYear",terms.year);
+    $("statsUpdated").textContent="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");
+  }catch{$("statsUpdated").textContent="تعذر تحميل الإحصائيات وعبارات البحث حاليًا؛ ستظهر عند استجابة واجهة التقارير.";}}
+
 function isLikelyAutomated(){const ua=navigator.userAgent||"";return /bot|crawler|spider|headless|phantom|selenium|playwright|puppeteer|lighthouse|pagespeed|curl|wget|python-requests/i.test(ua)||navigator.webdriver===true;}
 function recordQualifiedVisit(){if(isLikelyAutomated()||!window.fetch||!window.crypto?.getRandomValues)return;const started=performance.now(),nonce=crypto.getRandomValues(new Uint32Array(4)).join("-");let sent=false;const send=()=>{if(sent||performance.now()-started<2500||document.visibilityState!=="visible")return;sent=true;fetch(AQX_CONFIG.visitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,nonce,elapsed_ms:Math.round(performance.now()-started)}),keepalive:true}).catch(()=>{});};document.addEventListener("visibilitychange",send);window.addEventListener("pagehide",send,{once:true});setTimeout(send,3000);}
-loadReviews();loadPublicStats();recordQualifiedVisit();
+loadReviews();loadPublicStats();setInterval(loadPublicStats,15000);recordQualifiedVisit();
 $("year").textContent=new Date().getFullYear();
 </script>
 </body>
