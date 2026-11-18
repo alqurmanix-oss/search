@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
- <meta name="mitgo-verification" content="4bd2dd6e-2cde-4b01-8f5f-8944ee65d9f5" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#071523">
@@ -12,7 +11,7 @@
 :root{--bg:#071523;--bg2:#0b2032;--panel:#10283c;--panel2:#0d2235;--gold:#d8b56d;--gold2:#f1d89b;--ink:#f4f1e9;--muted:#a9b7c4;--line:rgba(216,181,109,.22);--white:#fff;--danger:#ffb4a8;--ok:#9bd8b2;--shadow:0 24px 80px rgba(0,0,0,.34);--radius:24px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 50% -18%,rgba(216,181,109,.13),transparent 42%),linear-gradient(180deg,#071523 0%,#091a29 52%,#071523 100%);color:var(--ink);font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif;min-height:100vh}
+body{margin:0;padding-right:250px;background:radial-gradient(ellipse at 50% -18%,rgba(216,181,109,.13),transparent 42%),linear-gradient(180deg,#071523 0%,#091a29 52%,#071523 100%);color:var(--ink);font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif;min-height:100vh}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
@@ -101,10 +100,33 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 @media(max-width:760px){.nav{height:70px}.navlinks{display:none;position:absolute;top:70px;right:20px;left:20px;padding:18px;background:#0c2235;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}.menu{display:block}.navcta{display:none}.hero{padding:67px 0 48px}h1{letter-spacing:-.8px}.searchbox{height:60px;padding:0 12px;gap:8px}.searchbtn{min-width:83px;padding:13px 14px}.searchbox input{font-size:14px}.searchmeta{font-size:10px}.ad-card{padding:13px 15px;min-height:82px}.ad-title{font-size:15px}.ad-sub{font-size:10px}.ad-action{padding:10px 12px;font-size:10px}.ad-image{width:76px;height:54px}.feature-grid{grid-template-columns:1fr}.feature{display:flex;gap:14px;align-items:flex-start}.feature-icon{flex:none}.feature h3{margin:2px 0 6px}.result{padding:13px;gap:12px}.thumb{width:76px;height:72px}.result-title{font-size:14px}.result-desc{font-size:11px}.foot{justify-content:center;text-align:center}}
 @media(max-width:390px){.wrap{width:calc(100% - 26px)}.brandname{font-size:19px}.searchbtn{min-width:72px;padding:12px 10px}.ad-action{font-size:9px}.ad-title{font-size:13px}.ad-sub{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* AQX final navigation and trust center */
+.sidebar{position:fixed;z-index:30;right:0;top:0;bottom:0;width:230px;padding:22px 15px;background:linear-gradient(180deg,#0b2032,#071523);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:9px;box-shadow:-16px 0 45px rgba(0,0,0,.18)}
+.side-brand{display:flex;align-items:center;gap:10px;padding:8px 9px 22px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}.side-brand b{color:var(--gold2);font-size:15px}.side-brand small{display:block;color:#8ea0ad;font-size:9px;margin-top:4px}
+.side-link{display:flex;align-items:center;gap:12px;padding:12px 13px;border:1px solid transparent;border-radius:12px;color:#c1ccd4;font-size:12px;transition:.2s}.side-link span{width:22px;text-align:center;color:var(--gold2);font-size:16px}.side-link:hover,.side-link.active{background:rgba(216,181,109,.09);border-color:var(--line);color:#fff}.side-note{margin-top:auto;padding:13px;border:1px solid rgba(216,181,109,.14);border-radius:13px;color:#8ea0ad;font-size:10px;line-height:1.9}.side-note b{color:var(--gold2)}
+.drawer-shade{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:29}
+.panel-section{padding:46px 0 20px;scroll-margin-top:24px}.panel-card{background:linear-gradient(145deg,rgba(17,42,62,.9),rgba(9,27,43,.92));border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}.panel-title{font-size:22px;margin:0 0 8px;color:#f5e7c8}.panel-muted{font-size:12px;color:#9eafbb;line-height:1.9;margin:0 0 18px}.rating-summary{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.rating-big{font-size:42px;font-weight:900;color:var(--gold2)}.stars{color:#e9c779;letter-spacing:2px}.review-list{display:grid;gap:12px}.review-item{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px;background:rgba(255,255,255,.025)}.review-item h4{margin:0 0 7px;color:#f0dfb8;font-size:13px}.review-item p{margin:7px 0;color:#b5c1ca;font-size:12px;line-height:1.9}.review-meta{font-size:10px;color:#8396a4}.review-form{display:grid;gap:11px}.review-form input,.review-form textarea{width:100%;border:1px solid rgba(216,181,109,.23);background:#0a1e2e;color:#f6f0e4;border-radius:11px;padding:12px;font:inherit;font-size:12px}.review-form textarea{min-height:100px;resize:vertical}.rating-pick{display:flex;gap:7px;direction:ltr;justify-content:flex-end}.rating-pick button{background:transparent;border:1px solid var(--line);border-radius:9px;color:#71818c;padding:7px 10px;font-size:19px}.rating-pick button.selected{color:#f0c96f;background:rgba(216,181,109,.1)}.primary-btn{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#f0d79a,#c69d50);color:#172638;font-weight:900}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat-box{padding:17px;border:1px solid rgba(216,181,109,.16);border-radius:14px;background:rgba(255,255,255,.025)}.stat-box b{display:block;color:var(--gold2);font-size:22px;margin-bottom:5px}.stat-box span{font-size:10px;color:#9eafbb}.fineprint{font-size:10px;color:#8293a0;line-height:1.8;margin-top:12px}
+@media(max-width:900px){body{padding-right:0}.sidebar{transform:translateX(105%);transition:transform .25s;width:min(290px,84vw)}.sidebar.open{transform:translateX(0)}.drawer-shade.open{display:block}.menu{display:block}.navlinks{display:none}.navcta{display:none}.stat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:901px){.menu{display:none}}
+
 </style>
 </head>
 <body>
 <div class="topline"></div>
+<div class="drawer-shade" id="drawerShade"></div>
+<aside class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
+ <div class="side-brand"><span class="brandmark" style="width:38px;height:38px;border-radius:12px">◇</span><span><b>نبراس AQX</b><small>مركز البحث والثقة</small></span></div>
+ <a class="side-link active" href="#home"><span>⌂</span>الرئيسية</a>
+ <a class="side-link" href="#search"><span>⌕</span>البحث</a>
+ <a class="side-link" href="#rating"><span>★</span>تقييم المحرك</a>
+ <a class="side-link" href="#reviews"><span>✎</span>المراجعات</a>
+ <a class="side-link" href="#statistics"><span>▥</span>إحصائيات نبراس</a>
+ <a class="side-link" href="#ad-info"><span>▣</span>الإعلانات</a>
+ <a class="side-link" href="#about"><span>ⓘ</span>عن المحرك</a>
+ <a class="side-link" href="#report"><span>⚑</span>الإبلاغ عن مشكلة</a>
+ <div class="side-note"><b>حماية AQX</b><br>تُستبعد الطلبات الآلية والأحداث المشبوهة من العدّ والإحصائيات، وتخضع مراجعات الزوار للاعتماد قبل النشر.</div>
+</aside>
 <header>
  <div class="wrap nav">
   <a class="brand" href="#" aria-label="AQX الصفحة الرئيسية">
@@ -147,6 +169,22 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </section>
 </main>
 
+
+<section class="wrap panel-section" id="rating">
+ <div class="panel-card"><div class="section-kicker" style="text-align:right">NEBRAS TRUST SCORE</div><h2 class="panel-title">تقييم محرك نبراس AQX</h2><p class="panel-muted">تقييمات الزوار المعتمدة فقط هي التي تدخل في المتوسط. المراجعات الجديدة لا تظهر قبل المراجعة والاعتماد.</p>
+  <div class="rating-summary"><div class="rating-big" id="ratingAverage">—</div><div><div class="stars" id="ratingStars">☆☆☆☆☆</div><div class="review-meta" id="ratingCount">جارٍ تحميل التقييمات...</div></div></div>
+ </div>
+</section>
+<section class="wrap panel-section" id="reviews">
+ <div class="panel-card"><h2 class="panel-title">آراء ومراجعات الزوار</h2><p class="panel-muted">شارك تجربتك مع نبراس. نطلب اسمًا وتقييمًا ورأيًا واضحًا، مع منع التكرار والمراجعات الآلية قدر الإمكان.</p>
+  <form class="review-form" id="reviewForm"><input id="reviewName" maxlength="100" placeholder="اسمك أو الاسم الظاهر" required><input id="reviewTitle" maxlength="160" placeholder="عنوان المراجعة (اختياري)"><div><div class="review-meta" style="margin-bottom:7px">تقييمك من 5 نجوم</div><div class="rating-pick" id="ratingPick"><button type="button" data-rating="1" aria-label="نجمة واحدة">★</button><button type="button" data-rating="2" aria-label="نجمتان">★</button><button type="button" data-rating="3" aria-label="ثلاث نجوم">★</button><button type="button" data-rating="4" aria-label="أربع نجوم">★</button><button type="button" data-rating="5" aria-label="خمس نجوم">★</button></div></div><textarea id="reviewText" minlength="8" maxlength="3000" placeholder="اكتب رأيك وتجربتك (8 أحرف على الأقل)" required></textarea><input id="reviewWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;right:-10000px;width:1px;height:1px"><button class="primary-btn" id="reviewSubmit" type="submit">إرسال المراجعة للمراجعة والاعتماد</button><div class="review-meta" id="reviewMessage" role="status"></div></form>
+ </div>
+ <div class="panel-card"><h3 class="panel-title" style="font-size:17px">أحدث المراجعات المعتمدة</h3><div class="review-list" id="reviewList"><div class="review-meta">جارٍ تحميل المراجعات...</div></div></div>
+</section>
+<section class="wrap panel-section" id="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">نعرض هنا مؤشرات موثوقة بعد استبعاد الزيارات الآلية والأحداث غير المعتمدة. بيانات الزوار التفصيلية وتقارير الحملات تبقى ضمن لوحة AQX الإدارية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات بشرية مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><p class="fineprint" id="statsUpdated">لا يتم احتساب زيارات البوتات أو أحداث الإعلانات المعلقة للمراجعة ضمن الأرقام المعتمدة.</p></div></section>
+<section class="wrap panel-section" id="ad-info"><div class="panel-card"><h2 class="panel-title">الإعلانات على نبراس</h2><p class="panel-muted">تُعرض الإعلانات وفق ترتيب شبكة AQX: الحملات المباشرة المؤهلة أولًا، ثم إعلانات AQX، ثم الإعلان الاحتياطي عند عدم توفر إعلان مؤهل. أحداث الإعلان تمر عبر التحقق ومراجعة مكافحة الاحتيال قبل اعتمادها إحصائيًا.</p></div></section>
+<section class="wrap panel-section" id="report"><div class="panel-card"><h2 class="panel-title">الإبلاغ عن مشكلة</h2><p class="panel-muted">لو واجهت مشكلة في البحث أو إعلانًا مضللًا أو محتوى غير مناسب، أرسل بلاغك من خلال <a href="https://alqurmanix.com" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:underline">بوابة AQX</a> مع وصف المشكلة والرابط إن وجد.</p></div></section>
+
 <section class="features" id="features">
  <div class="wrap">
   <div class="section-kicker">AQX SEARCH EXPERIENCE</div>
@@ -177,6 +215,11 @@ const AQX_CONFIG = Object.freeze({
   endpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-search",
   eventEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-network-event-gateway",
   redirectEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-go",
+  reviewFeedEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-review-feed",
+  reviewSubmitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-submit-review",
+  statsEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-public-stats",
+  visitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-pageview",
+  linkSlug: "nebras-aqx-search",
   publishableKey: "sb_publishable_qFdDHua0CEsCD-h63wtv-g_3LTHVrMC",
   propertyKey: "aqx-main",
   resultsPerPage: 20,
@@ -226,12 +269,12 @@ function createAdCard(ad){
   if(target){action.href=target;action.target="_blank";action.rel="noopener noreferrer sponsored";}
   card.append(action);
   if(ad.source_kind!=="aqx_fallback"&&ad.request_id&&ad.ad_id){
-    const mark=()=>sendAdEvent(ad,"impression");
+    const mark=()=>{if(document.visibilityState==="visible")sendAdEvent(ad,"viewable_impression");};
     if("IntersectionObserver" in window){
       const observer=new IntersectionObserver(entries=>{
-        if(entries.some(e=>e.isIntersecting)){mark();observer.disconnect();}
+        if(entries.some(e=>e.isIntersecting)){setTimeout(()=>{mark();observer.disconnect();},1000);}
       },{threshold:.5});observer.observe(card);
-    }else mark();
+    }else setTimeout(mark,1000);
     if(target)action.addEventListener("click",()=>sendAdEvent(ad,"click"),{passive:true});
   }
   return card;
@@ -253,7 +296,7 @@ function renderAds(data){
 }
 function sendAdEvent(ad,eventType){
   if(ad.source_kind==="aqx_fallback"||!ad.request_id||!ad.ad_id)return;
-  const payload=JSON.stringify({request_id:ad.request_id,creative_id:ad.ad_id,event_type:eventType});
+  const payload=JSON.stringify({request_id:ad.request_id,creative_id:ad.ad_id,event_type:eventType,viewable_ms:eventType==="viewable_impression"?1000:null});
   try{
     fetch(AQX_CONFIG.eventEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:payload,keepalive:true}).catch(()=>{});
   }catch(_){}
@@ -338,10 +381,19 @@ async function runSearch(query,replace=true){
 $("searchForm").addEventListener("submit",e=>{e.preventDefault();runSearch($("searchInput").value,true);});
 $("quickSearch").addEventListener("click",e=>{const b=e.target.closest("button[data-q]");if(!b)return;$("searchInput").value=b.dataset.q;runSearch(b.dataset.q,true);});
 $("moreBtn").addEventListener("click",()=>{if(state.hasMore)runSearch(state.query,false);});
-$("menuBtn").addEventListener("click",()=>{const nav=$("navLinks"),open=nav.classList.toggle("open");$("menuBtn").setAttribute("aria-expanded",String(open));});
-$("navLinks").addEventListener("click",e=>{if(e.target.closest("a")){$("navLinks").classList.remove("open");$("menuBtn").setAttribute("aria-expanded","false");}});
+function closeSidebar(){$("sidebar").classList.remove("open");$("drawerShade").classList.remove("open");$("menuBtn").setAttribute("aria-expanded","false");}
+$("menuBtn").addEventListener("click",()=>{$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("menuBtn").setAttribute("aria-expanded","true");});
+$("drawerShade").addEventListener("click",closeSidebar);
+$("sidebar").addEventListener("click",e=>{const a=e.target.closest("a");if(a){closeSidebar();document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x===a));}});
+let selectedRating=0;
+$("ratingPick").addEventListener("click",e=>{const b=e.target.closest("button[data-rating]");if(!b)return;selectedRating=Number(b.dataset.rating);$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",Number(x.dataset.rating)<=selectedRating));});
+async function loadReviews(){try{const u=AQX_CONFIG.reviewFeedEndpoint+"?slug="+encodeURIComponent(AQX_CONFIG.linkSlug);const r=await fetch(u,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر تحميل التقييمات");const p=d.profile||{};const avg=Number(p.average_rating||0),count=Number(p.approved_reviews||0);$("ratingAverage").textContent=count?avg.toFixed(2):"—";$("ratingStars").textContent="★".repeat(Math.round(avg))+"☆".repeat(5-Math.round(avg));$("ratingCount").textContent=count+" مراجعة معتمدة";const list=$("reviewList");list.replaceChildren();(d.reviews||[]).forEach(x=>{const card=document.createElement("article");card.className="review-item";const h=document.createElement("h4");h.textContent=(x.review_title||"مراجعة زائر")+" · "+"★".repeat(Number(x.rating||0));const p=document.createElement("p");p.textContent=x.review_text||"";const m=document.createElement("div");m.className="review-meta";m.textContent=(x.reviewer_name||"زائر AQX")+" · "+new Date(x.created_at).toLocaleDateString("ar-EG");card.append(h,p,m);if(x.author_reply){const reply=document.createElement("p");reply.textContent="رد AQX: "+x.author_reply;card.append(reply);}list.append(card);});if(!list.children.length){const e=document.createElement("div");e.className="review-meta";e.textContent="لا توجد مراجعات معتمدة حتى الآن. كن أول من يشارك رأيه.";list.append(e);}}catch(e){$("ratingCount").textContent="تعذر تحميل التقييمات الآن";$("reviewList").textContent="تعذر تحميل المراجعات. حاول لاحقًا.";}}
+$("reviewForm").addEventListener("submit",async e=>{e.preventDefault();const msg=$("reviewMessage");if(!selectedRating){msg.textContent="اختر عدد النجوم أولاً.";return;}const btn=$("reviewSubmit");btn.disabled=true;msg.textContent="جارٍ إرسال المراجعة...";try{const r=await fetch(AQX_CONFIG.reviewSubmitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,rating:selectedRating,reviewer_name:$("reviewName").value.trim(),review_title:$("reviewTitle").value.trim(),review_text:$("reviewText").value.trim(),website:$("reviewWebsite").value})});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر إرسال المراجعة");msg.textContent=d.message||"تم استلام مراجعتك وستُراجع قبل النشر.";$("reviewForm").reset();selectedRating=0;$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.remove("selected"));}catch(err){msg.textContent=err.message||"تعذر الإرسال الآن.";}finally{btn.disabled=false;}});
+async function loadPublicStats(){try{const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");$("statVisits").textContent=Number(d.visits||0).toLocaleString("ar-EG");$("statSearches").textContent=d.searches==null?"—":Number(d.searches).toLocaleString("ar-EG");$("statAdImpressions").textContent=Number(d.ad_impressions||0).toLocaleString("ar-EG");$("statAdClicks").textContent=Number(d.ad_clicks||0).toLocaleString("ar-EG");$("statsUpdated").textContent="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");}catch{$("statsUpdated").textContent="الإحصائيات العامة ستظهر بعد تفعيل واجهة التقارير الآمنة.";}}
+function isLikelyAutomated(){const ua=navigator.userAgent||"";return /bot|crawler|spider|headless|phantom|selenium|playwright|puppeteer|lighthouse|pagespeed|curl|wget|python-requests/i.test(ua)||navigator.webdriver===true;}
+function recordQualifiedVisit(){if(isLikelyAutomated()||!window.fetch||!window.crypto?.getRandomValues)return;const started=performance.now(),nonce=crypto.getRandomValues(new Uint32Array(4)).join("-");let sent=false;const send=()=>{if(sent||performance.now()-started<2500||document.visibilityState!=="visible")return;sent=true;fetch(AQX_CONFIG.visitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,nonce,elapsed_ms:Math.round(performance.now()-started)}),keepalive:true}).catch(()=>{});};document.addEventListener("visibilitychange",send);window.addEventListener("pagehide",send,{once:true});setTimeout(send,3000);}
+loadReviews();loadPublicStats();recordQualifiedVisit();
 $("year").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
-
