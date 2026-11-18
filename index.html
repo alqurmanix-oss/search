@@ -11,7 +11,7 @@
 :root{--bg:#071523;--bg2:#0b2032;--panel:#10283c;--panel2:#0d2235;--gold:#d8b56d;--gold2:#f1d89b;--ink:#f4f1e9;--muted:#a9b7c4;--line:rgba(216,181,109,.22);--white:#fff;--danger:#ffb4a8;--ok:#9bd8b2;--shadow:0 24px 80px rgba(0,0,0,.34);--radius:24px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;padding-right:250px;background:radial-gradient(ellipse at 50% -18%,rgba(216,181,109,.13),transparent 42%),linear-gradient(180deg,#071523 0%,#091a29 52%,#071523 100%);color:var(--ink);font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif;min-height:100vh}
+body{margin:0;padding-right:0;background:radial-gradient(ellipse at 50% -18%,rgba(216,181,109,.13),transparent 42%),linear-gradient(180deg,#071523 0%,#091a29 52%,#071523 100%);color:var(--ink);font-family:Tahoma,Arial,"Noto Sans Arabic",sans-serif;min-height:100vh}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
@@ -30,7 +30,7 @@ header{position:relative;z-index:5;border-bottom:1px solid rgba(255,255,255,.07)
 .navlinks a:hover{color:var(--gold2)}
 .navcta{border:1px solid var(--line);border-radius:999px;padding:11px 19px;color:var(--gold2);font-size:12px;transition:.2s}
 .navcta:hover{background:rgba(216,181,109,.1);border-color:var(--gold)}
-.menu{display:none;background:none;border:1px solid var(--line);color:var(--gold);border-radius:12px;padding:8px 11px}
+.menu{display:block;background:none;border:1px solid var(--line);color:var(--gold);border-radius:12px;padding:8px 11px}
 .hero{position:relative;overflow:hidden;padding:92px 0 64px;text-align:center}
 .hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid rgba(216,181,109,.09);border-radius:50%;width:600px;height:600px;top:-300px;left:50%;transform:translateX(-50%)}
 .hero:after{width:760px;height:760px;top:-380px;border-color:rgba(216,181,109,.045)}
@@ -105,10 +105,19 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 .sidebar{position:fixed;z-index:30;right:0;top:0;bottom:0;width:230px;padding:22px 15px;background:linear-gradient(180deg,#0b2032,#071523);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:9px;box-shadow:-16px 0 45px rgba(0,0,0,.18)}
 .side-brand{display:flex;align-items:center;gap:10px;padding:8px 9px 22px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}.side-brand b{color:var(--gold2);font-size:15px}.side-brand small{display:block;color:#8ea0ad;font-size:9px;margin-top:4px}
 .side-link{display:flex;align-items:center;gap:12px;padding:12px 13px;border:1px solid transparent;border-radius:12px;color:#c1ccd4;font-size:12px;transition:.2s}.side-link span{width:22px;text-align:center;color:var(--gold2);font-size:16px}.side-link:hover,.side-link.active{background:rgba(216,181,109,.09);border-color:var(--line);color:#fff}.side-note{margin-top:auto;padding:13px;border:1px solid rgba(216,181,109,.14);border-radius:13px;color:#8ea0ad;font-size:10px;line-height:1.9}.side-note b{color:var(--gold2)}
+.sidebar{transform:translateX(105%);transition:transform .25s ease}
+.sidebar.open{transform:translateX(0)}
 .drawer-shade{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:29}
+.page-hidden{display:none!important}
+.voice-btn{flex:none;width:42px;height:42px;border:1px solid rgba(156,122,60,.3);border-radius:12px;background:#f1eee5;color:#87652f;font-size:18px}
+.voice-btn.listening{background:#f8dede;color:#a32929;border-color:#c66}
+.result-actions{display:flex;justify-content:flex-start;margin-top:10px}
+.save-result,.clear-btn{border:1px solid var(--line);border-radius:9px;padding:7px 11px;background:rgba(216,181,109,.07);color:var(--gold2);font-size:11px}
+.history-query{border:0;background:transparent;color:var(--gold2);font-weight:700;text-align:right;padding:0;cursor:pointer}
+.history-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .panel-section{padding:46px 0 20px;scroll-margin-top:24px}.panel-card{background:linear-gradient(145deg,rgba(17,42,62,.9),rgba(9,27,43,.92));border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}.panel-title{font-size:22px;margin:0 0 8px;color:#f5e7c8}.panel-muted{font-size:12px;color:#9eafbb;line-height:1.9;margin:0 0 18px}.rating-summary{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.rating-big{font-size:42px;font-weight:900;color:var(--gold2)}.stars{color:#e9c779;letter-spacing:2px}.review-list{display:grid;gap:12px}.review-item{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px;background:rgba(255,255,255,.025)}.review-item h4{margin:0 0 7px;color:#f0dfb8;font-size:13px}.review-item p{margin:7px 0;color:#b5c1ca;font-size:12px;line-height:1.9}.review-meta{font-size:10px;color:#8396a4}.review-form{display:grid;gap:11px}.review-form input,.review-form textarea{width:100%;border:1px solid rgba(216,181,109,.23);background:#0a1e2e;color:#f6f0e4;border-radius:11px;padding:12px;font:inherit;font-size:12px}.review-form textarea{min-height:100px;resize:vertical}.rating-pick{display:flex;gap:7px;direction:ltr;justify-content:flex-end}.rating-pick button{background:transparent;border:1px solid var(--line);border-radius:9px;color:#71818c;padding:7px 10px;font-size:19px}.rating-pick button.selected{color:#f0c96f;background:rgba(216,181,109,.1)}.primary-btn{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#f0d79a,#c69d50);color:#172638;font-weight:900}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat-box{padding:17px;border:1px solid rgba(216,181,109,.16);border-radius:14px;background:rgba(255,255,255,.025)}.stat-box b{display:block;color:var(--gold2);font-size:22px;margin-bottom:5px}.stat-box span{font-size:10px;color:#9eafbb}.fineprint{font-size:10px;color:#8293a0;line-height:1.8;margin-top:12px}
 @media(max-width:900px){body{padding-right:0}.sidebar{transform:translateX(105%);transition:transform .25s;width:min(290px,84vw)}.sidebar.open{transform:translateX(0)}.drawer-shade.open{display:block}.menu{display:block}.navlinks{display:none}.navcta{display:none}.stat-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:901px){.menu{display:none}}
+@media(min-width:901px){.menu{display:block}}
 .query-analytics{margin-top:24px}.query-analytics h3{font-size:16px;color:var(--gold2)}.query-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.query-columns>div{border:1px solid rgba(216,181,109,.14);border-radius:13px;padding:12px;background:rgba(255,255,255,.02)}.query-columns h4{font-size:11px;color:#d9c38f;margin:0 0 8px}.query-columns ol{margin:0;padding:0 20px 0 0;color:#b8c5ce;font-size:11px;line-height:2}.query-columns li{overflow-wrap:anywhere}.external-ad-frame{display:block;width:100%;min-height:100px;border:0;border-radius:12px;background:rgba(255,255,255,.02);margin:10px 0}.external-ad-wrap{width:100%;max-width:100%;overflow:hidden;margin:12px auto}.external-ad-wrap[data-size="728x90"]{max-width:728px;min-height:90px}.external-ad-wrap[data-size="300x250"]{max-width:300px;min-height:250px}.external-ad-wrap[data-size="320x50"]{max-width:320px;min-height:60px}@media(max-width:760px){.query-columns{grid-template-columns:1fr 1fr}}
 
 </style>
@@ -118,19 +127,21 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 <div class="drawer-shade" id="drawerShade"></div>
 <aside class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
  <div class="side-brand"><span class="brandmark" style="width:38px;height:38px;border-radius:12px">◇</span><span><b>نبراس AQX</b><small>مركز البحث والثقة</small></span></div>
- <a class="side-link active" href="#home"><span>⌂</span>الرئيسية</a>
- <a class="side-link" href="#search"><span>⌕</span>البحث</a>
- <a class="side-link" href="#rating"><span>★</span>تقييم المحرك</a>
- <a class="side-link" href="#reviews"><span>✎</span>المراجعات</a>
- <a class="side-link" href="#statistics"><span>▥</span>إحصائيات نبراس</a>
- <a class="side-link" href="#ad-info"><span>▣</span>الإعلانات</a>
- <a class="side-link" href="#about"><span>ⓘ</span>عن المحرك</a>
- <a class="side-link" href="#report"><span>⚑</span>الإبلاغ عن مشكلة</a>
+ <a class="side-link active" href="#home" data-page-target="home"><span>⌂</span>الرئيسية</a>
+ <a class="side-link" href="#search" data-page-target="search"><span>⌕</span>البحث</a>
+ <a class="side-link" href="#bookmarks" data-page-target="bookmarks"><span>☆</span>المحفوظات</a>
+ <a class="side-link" href="#history" data-page-target="history"><span>◷</span>سجل البحث الكامل</a>
+ <a class="side-link" href="#rating" data-page-target="rating"><span>★</span>تقييم المحرك</a>
+ <a class="side-link" href="#reviews" data-page-target="reviews"><span>✎</span>المراجعات</a>
+ <a class="side-link" href="#statistics" data-page-target="statistics"><span>▥</span>الإحصائيات</a>
+ <a class="side-link" href="#ad-info" data-page-target="ad-info"><span>▣</span>الإعلانات</a>
+ <a class="side-link" href="#about" data-page-target="about"><span>ⓘ</span>عن المحرك</a>
+ <a class="side-link" href="#report" data-page-target="report"><span>⚑</span>الإبلاغ عن مشكلة</a>
  <div class="side-note"><b>حماية AQX</b><br>تُستبعد الطلبات الآلية والأحداث المشبوهة من العدّ والإحصائيات، وتخضع مراجعات الزوار للاعتماد قبل النشر.</div>
 </aside>
 <header>
  <div class="wrap nav">
-  <a class="brand" href="#" aria-label="AQX الصفحة الرئيسية">
+  <a class="brand" id="brandLink" href="#home" aria-label="AQX الصفحة الرئيسية">
    <span class="brandmark"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M5 29.5 15.2 9l6.2 12.4L26 12l9 17.5H5Z" stroke="#E8CC8D" stroke-width="2.2" stroke-linejoin="round"/><path d="M13.5 25.5h13" stroke="#E8CC8D" stroke-width="2.2" stroke-linecap="round"/><circle cx="30.5" cy="8.5" r="2.3" fill="#E8CC8D"/></svg></span>
    <span><span class="brandname">AQX <span>NEBRAS</span></span><span class="brandtag">SEARCH • DISCOVER • KNOW</span></span>
   </a>
@@ -140,7 +151,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </div>
 </header>
 
-<section class="hero" id="home">
+<section class="hero" id="home" data-page="home,search">
  <div class="wrap">
   <div class="eyebrow"><i></i> محرك البحث العربي من منظومة AQX</div>
   <h1>المعرفة أقرب مما <em>تتخيل</em></h1>
@@ -149,6 +160,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
    <div class="searchbox">
     <svg class="searchicon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <input id="searchInput" type="search" maxlength="200" autocomplete="off" placeholder="ابحث عن معلومة، مقال، موقع أو مصدر..." aria-label="اكتب كلمات البحث">
+    <button class="voice-btn" id="voiceBtn" type="button" aria-label="البحث الصوتي" title="البحث الصوتي">🎙</button>
     <button class="searchbtn" id="searchBtn" type="submit">ابحث الآن</button>
    </div>
   </form>
@@ -157,7 +169,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </div>
 </section>
 
-<main class="wrap" id="search">
+<main class="wrap" id="search" data-page="home,search">
  <div class="ad-slot" id="adTop" aria-label="موضع إعلان أعلى الصفحة"></div>
  <section id="resultsSection" class="hidden" aria-live="polite">
   <div class="results-head"><h2 id="resultsTitle">نتائج البحث</h2><span class="results-count" id="resultsCount"></span></div>
@@ -171,22 +183,24 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 </main>
 
 
-<section class="wrap panel-section" id="rating">
+<section class="wrap panel-section" id="rating" data-page="rating">
  <div class="panel-card"><div class="section-kicker" style="text-align:right">NEBRAS TRUST SCORE</div><h2 class="panel-title">تقييم محرك نبراس AQX</h2><p class="panel-muted">تقييمات الزوار المعتمدة فقط هي التي تدخل في المتوسط. المراجعات الجديدة لا تظهر قبل المراجعة والاعتماد.</p>
   <div class="rating-summary"><div class="rating-big" id="ratingAverage">—</div><div><div class="stars" id="ratingStars">☆☆☆☆☆</div><div class="review-meta" id="ratingCount">جارٍ تحميل التقييمات...</div></div></div>
  </div>
 </section>
-<section class="wrap panel-section" id="reviews">
+<section class="wrap panel-section" id="reviews" data-page="reviews">
  <div class="panel-card"><h2 class="panel-title">آراء ومراجعات الزوار</h2><p class="panel-muted">شارك تجربتك مع نبراس. نطلب اسمًا وتقييمًا ورأيًا واضحًا، مع منع التكرار والمراجعات الآلية قدر الإمكان.</p>
   <form class="review-form" id="reviewForm"><input id="reviewName" maxlength="100" placeholder="اسمك أو الاسم الظاهر" required><input id="reviewTitle" maxlength="160" placeholder="عنوان المراجعة (اختياري)"><div><div class="review-meta" style="margin-bottom:7px">تقييمك من 5 نجوم</div><div class="rating-pick" id="ratingPick"><button type="button" data-rating="1" aria-label="نجمة واحدة">★</button><button type="button" data-rating="2" aria-label="نجمتان">★</button><button type="button" data-rating="3" aria-label="ثلاث نجوم">★</button><button type="button" data-rating="4" aria-label="أربع نجوم">★</button><button type="button" data-rating="5" aria-label="خمس نجوم">★</button></div></div><textarea id="reviewText" minlength="8" maxlength="3000" placeholder="اكتب رأيك وتجربتك (8 أحرف على الأقل)" required></textarea><input id="reviewWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;right:-10000px;width:1px;height:1px"><button class="primary-btn" id="reviewSubmit" type="submit">إرسال المراجعة للمراجعة والاعتماد</button><div class="review-meta" id="reviewMessage" role="status"></div></form>
  </div>
  <div class="panel-card"><h3 class="panel-title" style="font-size:17px">أحدث المراجعات المعتمدة</h3><div class="review-list" id="reviewList"><div class="review-meta">جارٍ تحميل المراجعات...</div></div></div>
 </section>
-<section class="wrap panel-section" id="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">مؤشرات عامة من سجلات AQX المتاحة. استبعاد الروبوتات يعتمد على آليات الكشف المسجلة ولا يمثل ضمانًا مطلقًا لمنع كل الزيارات الآلية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><div class="query-analytics"><h3>عبارات البحث الأكثر استخدامًا</h3><div class="query-columns"><div><h4>مباشر · آخر 5 دقائق</h4><ol id="liveSearchTerms"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 24 ساعة</h4><ol id="topSearchToday"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 7 أيام</h4><ol id="topSearchWeek"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 30 يومًا</h4><ol id="topSearchMonth"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 365 يومًا</h4><ol id="topSearchYear"><li>لا توجد بيانات بعد</li></ol></div></div></div><p class="fineprint" id="statsUpdated">في انتظار تحميل الإحصائيات.</p></div></section>
-<section class="wrap panel-section" id="ad-info"><div class="panel-card"><h2 class="panel-title">الإعلانات على نبراس</h2><p class="panel-muted">تُعرض الإعلانات وفق ترتيب شبكة AQX: الحملات المباشرة المؤهلة أولًا، ثم إعلانات AQX، ثم الإعلان الاحتياطي عند عدم توفر إعلان مؤهل. أحداث الإعلان تمر عبر التحقق ومراجعة مكافحة الاحتيال قبل اعتمادها إحصائيًا.</p></div></section>
-<section class="wrap panel-section" id="report"><div class="panel-card"><h2 class="panel-title">الإبلاغ عن مشكلة</h2><p class="panel-muted">لو واجهت مشكلة في البحث أو إعلانًا مضللًا أو محتوى غير مناسب، أرسل بلاغك من خلال <a href="https://alqurmanix.com" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:underline">بوابة AQX</a> مع وصف المشكلة والرابط إن وجد.</p></div></section>
+<section class="wrap panel-section" id="statistics" data-page="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">مؤشرات عامة من سجلات AQX المتاحة. استبعاد الروبوتات يعتمد على آليات الكشف المسجلة ولا يمثل ضمانًا مطلقًا لمنع كل الزيارات الآلية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><div class="query-analytics"><h3>عبارات البحث الأكثر استخدامًا</h3><div class="query-columns"><div><h4>مباشر · آخر 5 دقائق</h4><ol id="liveSearchTerms"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 24 ساعة</h4><ol id="topSearchToday"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 7 أيام</h4><ol id="topSearchWeek"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 30 يومًا</h4><ol id="topSearchMonth"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 365 يومًا</h4><ol id="topSearchYear"><li>لا توجد بيانات بعد</li></ol></div></div></div><p class="fineprint" id="statsUpdated">في انتظار تحميل الإحصائيات.</p></div></section>
+<section class="wrap panel-section" id="ad-info" data-page="ad-info"><div class="panel-card"><h2 class="panel-title">الإعلانات على نبراس</h2><p class="panel-muted">تُعرض الإعلانات وفق ترتيب شبكة AQX: الحملات المباشرة المؤهلة أولًا، ثم إعلانات AQX، ثم الإعلان الاحتياطي عند عدم توفر إعلان مؤهل. أحداث الإعلان تمر عبر التحقق ومراجعة مكافحة الاحتيال قبل اعتمادها إحصائيًا.</p></div></section>
+<section class="wrap panel-section" id="bookmarks" data-page="bookmarks"><div class="panel-card"><h2 class="panel-title">المحفوظات</h2><p class="panel-muted">الروابط التي تحفظها للرجوع إليها لاحقًا على هذا الجهاز.</p><div class="review-list" id="bookmarksList"></div></div></section>
+<section class="wrap panel-section" id="history" data-page="history"><div class="panel-card"><div class="history-head"><div><h2 class="panel-title">سجل البحث الكامل</h2><p class="panel-muted">كل عمليات البحث التي تجريها من هذا المتصفح، مرتبة من الأحدث إلى الأقدم.</p></div><button class="clear-btn" id="clearHistoryBtn" type="button">مسح السجل</button></div><div class="review-list" id="historyList"></div></div></section>
+<section class="wrap panel-section" id="report" data-page="report"><div class="panel-card"><h2 class="panel-title">الإبلاغ عن مشكلة</h2><p class="panel-muted">لو واجهت مشكلة في البحث أو إعلانًا مضللًا أو محتوى غير مناسب، أرسل بلاغك من خلال <a href="https://alqurmanix.com" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:underline">بوابة AQX</a> مع وصف المشكلة والرابط إن وجد.</p></div></section>
 
-<section class="features" id="features">
+<section class="features" id="features" data-page="home">
  <div class="wrap">
   <div class="section-kicker">AQX SEARCH EXPERIENCE</div>
   <h2 class="section-title">بحث أذكى. وصول أوضح.</h2>
@@ -199,7 +213,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </div>
 </section>
 
-<section id="about" class="wrap" style="padding:34px 0 70px;text-align:center">
+<section id="about" class="wrap" data-page="about" style="padding:34px 0 70px;text-align:center">
  <div class="eyebrow">منظومة القرماني إكس</div>
  <h2 style="font-size:25px;margin:16px 0 8px">AQX — المعرفة في مكان واحد</h2>
  <p style="color:#9eafbb;font-size:12px;line-height:2;max-width:650px;margin:auto">نبراس جزء من منظومة AQX، ويهدف إلى تسهيل اكتشاف المحتوى الرقمي والوصول إلى المصادر المسجلة والمنشورة داخلها.</p>
@@ -356,8 +370,10 @@ function createResult(item){
   add(safeText(item.content_type,"محتوى"));
   if(item.link_health_status==="valid")add("الرابط متاح","pill good");
   else if(item.link_health_status==="broken")add("يحتاج مراجعة","pill warn");
-  if(Number(item.average_rating)>0)add("التقييم "+Number(item.average_rating).toFixed(1)+" ★");
-  main.append(title,desc,meta);article.append(main);return article;
+  const actions=document.createElement("div");actions.className="result-actions";
+  const save=document.createElement("button");save.type="button";save.className="save-result";save.textContent=isSavedItem(item)?"★ محفوظ":"☆ حفظ";
+  save.addEventListener("click",()=>toggleSavedItem(item,save));actions.append(save);
+  main.append(title,desc,meta,actions);article.append(main);return article;
 }
 function renderSuggestions(list){
   const box=$("suggestions");box.replaceChildren();
@@ -391,6 +407,7 @@ async function runSearch(query,replace=true){
   if(!q){$("searchInput").focus();toast("اكتب كلمة أو عبارة للبحث أولاً.");return;}
   if(state.loading)return;
   state.loading=true;state.query=q;
+  if(replace)recordSearchHistory(q);
   if(replace){state.offset=0;$("resultsList").replaceChildren();$("suggestions").classList.add("hidden");}
   $("resultsSection").classList.remove("hidden");$("loading").style.display="block";
   $("resultsTitle").textContent="جارٍ البحث عن: "+q;
@@ -417,9 +434,27 @@ $("searchForm").addEventListener("submit",e=>{e.preventDefault();runSearch($("se
 $("quickSearch").addEventListener("click",e=>{const b=e.target.closest("button[data-q]");if(!b)return;$("searchInput").value=b.dataset.q;runSearch(b.dataset.q,true);});
 $("moreBtn").addEventListener("click",()=>{if(state.hasMore)runSearch(state.query,false);});
 function closeSidebar(){$("sidebar").classList.remove("open");$("drawerShade").classList.remove("open");$("menuBtn").setAttribute("aria-expanded","false");}
-$("menuBtn").addEventListener("click",()=>{$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("menuBtn").setAttribute("aria-expanded","true");});
+function openSidebar(){$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("menuBtn").setAttribute("aria-expanded","true");}
+$("menuBtn").addEventListener("click",()=>{$("sidebar").classList.contains("open")?closeSidebar():openSidebar();});
 $("drawerShade").addEventListener("click",closeSidebar);
-$("sidebar").addEventListener("click",e=>{const a=e.target.closest("a");if(a){closeSidebar();document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x===a));}});
+function showPage(page){
+  const valid=["home","search","bookmarks","history","rating","reviews","statistics","ad-info","about","report"];
+  if(!valid.includes(page))page="home";
+  document.querySelectorAll("[data-page]").forEach(el=>{
+    const pages=(el.dataset.page||"").split(",").map(x=>x.trim());
+    el.classList.toggle("page-hidden",!pages.includes(page));
+  });
+  document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x.dataset.pageTarget===page));
+  if(page==="bookmarks")renderBookmarks();
+  if(page==="history")renderHistory();
+  closeSidebar();
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(location.hash!=="#"+page)window.history.replaceState(null,"","#"+page);
+}
+$("sidebar").addEventListener("click",e=>{const a=e.target.closest("a[data-page-target]");if(a){e.preventDefault();showPage(a.dataset.pageTarget);}});
+$("brandLink")?.addEventListener("click",e=>{e.preventDefault();showPage("home");});
+window.addEventListener("hashchange",()=>{const page=location.hash.replace("#","");if(page)showPage(page);});
+
 let selectedRating=0;
 $("ratingPick").addEventListener("click",e=>{const b=e.target.closest("button[data-rating]");if(!b)return;selectedRating=Number(b.dataset.rating);$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",Number(x.dataset.rating)<=selectedRating));});
 async function loadReviews(){try{const u=AQX_CONFIG.reviewFeedEndpoint+"?slug="+encodeURIComponent(AQX_CONFIG.linkSlug);const r=await fetch(u,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر تحميل التقييمات");const p=d.profile||{};const avg=Number(p.average_rating||0),count=Number(p.approved_reviews||0);$("ratingAverage").textContent=count?avg.toFixed(2):"—";$("ratingStars").textContent="★".repeat(Math.round(avg))+"☆".repeat(5-Math.round(avg));$("ratingCount").textContent=count+" مراجعة معتمدة";const list=$("reviewList");list.replaceChildren();(d.reviews||[]).forEach(x=>{const card=document.createElement("article");card.className="review-item";const h=document.createElement("h4");h.textContent=(x.review_title||"مراجعة زائر")+" · "+"★".repeat(Number(x.rating||0));const p=document.createElement("p");p.textContent=x.review_text||"";const m=document.createElement("div");m.className="review-meta";m.textContent=(x.reviewer_name||"زائر AQX")+" · "+new Date(x.created_at).toLocaleDateString("ar-EG");card.append(h,p,m);if(x.author_reply){const reply=document.createElement("p");reply.textContent="رد AQX: "+x.author_reply;card.append(reply);}list.append(card);});if(!list.children.length){const e=document.createElement("div");e.className="review-meta";e.textContent="لا توجد مراجعات معتمدة حتى الآن. كن أول من يشارك رأيه.";list.append(e);}}catch(e){$("ratingCount").textContent="تعذر تحميل التقييمات الآن";$("reviewList").textContent="تعذر تحميل المراجعات. حاول لاحقًا.";}}
@@ -448,8 +483,66 @@ async function loadPublicStats(){
 
 function isLikelyAutomated(){const ua=navigator.userAgent||"";return /bot|crawler|spider|headless|phantom|selenium|playwright|puppeteer|lighthouse|pagespeed|curl|wget|python-requests/i.test(ua)||navigator.webdriver===true;}
 function recordQualifiedVisit(){if(isLikelyAutomated()||!window.fetch||!window.crypto?.getRandomValues)return;const started=performance.now(),nonce=crypto.getRandomValues(new Uint32Array(4)).join("-");let sent=false;const send=()=>{if(sent||performance.now()-started<2500||document.visibilityState!=="visible")return;sent=true;fetch(AQX_CONFIG.visitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,nonce,elapsed_ms:Math.round(performance.now()-started)}),keepalive:true}).catch(()=>{});};document.addEventListener("visibilitychange",send);window.addEventListener("pagehide",send,{once:true});setTimeout(send,3000);}
+const STORAGE_KEYS={history:"aqx_nebras_search_history_v1",bookmarks:"aqx_nebras_bookmarks_v1"};
+function readLocal(key){try{const value=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(value)?value:[];}catch(_){return [];}}
+function writeLocal(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch(_){toast("تعذر الحفظ؛ قد تكون مساحة التخزين ممتلئة أو معطلة.");return false;}}
+function recordSearchHistory(query){
+  const rows=readLocal(STORAGE_KEYS.history);rows.unshift({query,created_at:new Date().toISOString()});
+  writeLocal(STORAGE_KEYS.history,rows);
+}
+function itemUrl(item){
+  const slug=safeText(item.slug,"");
+  if(slug)return AQX_CONFIG.redirectEndpoint+"?slug="+encodeURIComponent(slug);
+  return safeHttps(item.destination_url)||"";
+}
+function savedKey(item){return itemUrl(item)||safeText(item.title,"")+"|"+safeText(item.platform_name,"");}
+function isSavedItem(item){const key=savedKey(item);return !!key&&readLocal(STORAGE_KEYS.bookmarks).some(x=>savedKey(x)===key);}
+function toggleSavedItem(item,button){
+  const rows=readLocal(STORAGE_KEYS.bookmarks),key=savedKey(item),exists=rows.some(x=>savedKey(x)===key);
+  const next=exists?rows.filter(x=>savedKey(x)!==key):[{...item,saved_at:new Date().toISOString()},...rows];
+  if(writeLocal(STORAGE_KEYS.bookmarks,next)){if(button)button.textContent=exists?"☆ حفظ":"★ محفوظ";toast(exists?"تمت إزالة الرابط من المحفوظات":"تم حفظ الرابط للرجوع إليه");}
+}
+function renderBookmarks(){
+  const list=$("bookmarksList");list.replaceChildren();const rows=readLocal(STORAGE_KEYS.bookmarks);
+  if(!rows.length){list.textContent="لا توجد روابط محفوظة حتى الآن.";return;}
+  rows.forEach(item=>{
+    const card=document.createElement("article");card.className="review-item";
+    const link=document.createElement("a");link.className="result-title";link.textContent=safeText(item.title,"رابط محفوظ");const url=itemUrl(item);
+    if(url){link.href=url;link.target="_blank";link.rel="noopener noreferrer";}
+    const desc=document.createElement("p");desc.textContent=safeText(item.description,"");
+    const meta=document.createElement("div");meta.className="review-meta";meta.textContent=safeText(item.platform_name,"مصدر AQX")+" · حُفظ "+new Date(item.saved_at||Date.now()).toLocaleString("ar-EG");
+    const remove=document.createElement("button");remove.type="button";remove.className="clear-btn";remove.textContent="إزالة";remove.addEventListener("click",()=>{writeLocal(STORAGE_KEYS.bookmarks,readLocal(STORAGE_KEYS.bookmarks).filter(x=>savedKey(x)!==savedKey(item)));renderBookmarks();});
+    card.append(link,desc,meta,remove);list.append(card);
+  });
+}
+function renderHistory(){
+  const list=$("historyList");list.replaceChildren();const rows=readLocal(STORAGE_KEYS.history);
+  if(!rows.length){list.textContent="لا يوجد سجل بحث حتى الآن.";return;}
+  rows.forEach((item,index)=>{
+    const card=document.createElement("article");card.className="review-item";
+    const q=document.createElement("button");q.type="button";q.className="history-query";q.textContent=item.query;
+    q.addEventListener("click",()=>{$("searchInput").value=item.query;showPage("search");runSearch(item.query,true);});
+    const meta=document.createElement("div");meta.className="review-meta";meta.textContent=new Date(item.created_at||Date.now()).toLocaleString("ar-EG");
+    const remove=document.createElement("button");remove.type="button";remove.className="clear-btn";remove.textContent="حذف";remove.addEventListener("click",()=>{const next=readLocal(STORAGE_KEYS.history);next.splice(index,1);writeLocal(STORAGE_KEYS.history,next);renderHistory();});
+    card.append(q,meta,remove);list.append(card);
+  });
+}
+$("clearHistoryBtn").addEventListener("click",()=>{if(confirm("هل تريد مسح سجل البحث بالكامل من هذا الجهاز؟")){writeLocal(STORAGE_KEYS.history,[]);renderHistory();}});
+let speechRecognition=null;
+$("voiceBtn").addEventListener("click",()=>{
+  const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!Speech){toast("البحث الصوتي غير مدعوم في هذا المتصفح. جرّب Chrome.");return;}
+  if(speechRecognition){speechRecognition.stop();speechRecognition=null;return;}
+  speechRecognition=new Speech();speechRecognition.lang="ar-EG";speechRecognition.interimResults=false;speechRecognition.maxAlternatives=1;
+  $("voiceBtn").classList.add("listening");$("voiceBtn").textContent="●";
+  speechRecognition.onresult=e=>{const text=e.results?.[0]?.[0]?.transcript||"";if(text){$("searchInput").value=text;runSearch(text,true);}};
+  speechRecognition.onerror=()=>toast("لم نتمكن من التقاط الصوت. تحقق من إذن الميكروفون.");
+  speechRecognition.onend=()=>{$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";speechRecognition=null;};
+  try{speechRecognition.start();toast("تحدث الآن للبحث بالصوت");}catch(_){speechRecognition=null;$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";toast("تعذر تشغيل الميكروفون.");}
+});
 loadReviews();loadPublicStats();setInterval(loadPublicStats,15000);recordQualifiedVisit();
 $("year").textContent=new Date().getFullYear();
+showPage(location.hash.replace("#","")||"home");
 </script>
 </body>
 </html>
