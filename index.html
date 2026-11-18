@@ -130,7 +130,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 .sidebar{transform:translateX(105%);transition:transform .25s ease}
 .sidebar.open{transform:translateX(0)}
 .drawer-shade{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:29}
-.page-hidden{display:none!important}
+.page-hidden,[data-page][hidden]{display:none!important;visibility:hidden!important}
+.drawer-shade.open{display:block!important}
 .voice-btn{flex:none;width:42px;height:42px;border:1px solid rgba(156,122,60,.3);border-radius:12px;background:#f1eee5;color:#87652f;font-size:18px}
 .voice-btn.listening{background:#f8dede;color:#a32929;border-color:#c66}
 .result-actions{display:flex;justify-content:flex-start;margin-top:10px}
@@ -578,8 +579,8 @@ async function runSearch(query,replace=true){
 $("searchForm").addEventListener("submit",e=>{e.preventDefault();runSearch($("searchInput").value,true);});
 $("quickSearch").addEventListener("click",e=>{const b=e.target.closest("button[data-q]");if(!b)return;$("searchInput").value=b.dataset.q;runSearch(b.dataset.q,true);});
 $("moreBtn").addEventListener("click",()=>{if(state.hasMore)runSearch(state.query,false);});
-function closeSidebar(){$("sidebar").classList.remove("open");$("drawerShade").classList.remove("open");$("menuBtn").setAttribute("aria-expanded","false");}
-function openSidebar(){$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("menuBtn").setAttribute("aria-expanded","true");}
+function closeSidebar(){$("sidebar").classList.remove("open");$("drawerShade").classList.remove("open");$("sidebar").setAttribute("aria-hidden","true");$("menuBtn").setAttribute("aria-expanded","false");}
+function openSidebar(){$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("sidebar").setAttribute("aria-hidden","false");$("menuBtn").setAttribute("aria-expanded","true");}
 $("menuBtn").addEventListener("click",()=>{$("sidebar").classList.contains("open")?closeSidebar():openSidebar();});
 $("drawerShade").addEventListener("click",closeSidebar);
 function showPage(page){
@@ -587,7 +588,9 @@ function showPage(page){
   if(!valid.includes(page))page="home";
   document.querySelectorAll("[data-page]").forEach(el=>{
     const pages=(el.dataset.page||"").split(",").map(x=>x.trim());
-    el.classList.toggle("page-hidden",!pages.includes(page));
+    const shouldShow=pages.includes(page);
+    el.hidden=!shouldShow;
+    el.classList.toggle("page-hidden",!shouldShow);
   });
   document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x.dataset.pageTarget===page));
   if(page==="bookmarks")renderBookmarks();
@@ -612,7 +615,7 @@ function renderSearchTermList(id,rows,live=false){
   if(!Array.isArray(rows)||!rows.length){const li=document.createElement("li");li.textContent="لا توجد بيانات مسجلة";list.append(li);return;}
   rows.slice(0,8).forEach(row=>{const li=document.createElement("li");const q=safeText(row.query||row.search||row.query_text,"عبارة غير متاحة");li.textContent=q+(live&&row.last_searched_at?" · "+new Date(row.last_searched_at).toLocaleTimeString("ar-EG"):"");list.append(li);});
 }
-async function loadPublicStats(){
+async async function loadPublicStats(){
   try{
     const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey},cache:"no-store"});
     const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");
