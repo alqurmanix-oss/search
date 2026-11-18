@@ -52,6 +52,24 @@ h1 em{font-style:normal;color:var(--gold2);text-shadow:0 8px 38px rgba(216,181,1
 .quick{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin:27px auto 0;color:#91a1ad;font-size:12px}
 .quick button{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:999px;padding:8px 13px;color:#c6d0d7;font-size:11px}
 .quick button:hover{border-color:var(--gold);color:var(--gold2)}
+.topic-tabs{max-width:980px;justify-content:center;margin-top:24px}
+.topic-tabs button{border-radius:12px;padding:10px 15px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));white-space:nowrap}
+.home-feed{padding-top:22px;padding-bottom:70px}
+.feed-section{margin:24px auto 54px}
+.feed-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.feed-title{font-size:clamp(21px,3vw,28px);margin:7px 0;color:#f5e7c9}
+.feed-subtitle{font-size:12px;color:#91a4b3;margin:0;line-height:1.8}
+.feed-count{flex:none;color:#d8b56d;border:1px solid rgba(216,181,109,.25);background:rgba(216,181,109,.06);border-radius:999px;padding:7px 11px;font-size:10px}
+.random-section{padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.feed-loading{text-align:center;padding:22px;color:var(--gold2);font-size:12px}
+.feed-sentinel{height:2px;width:100%}
+.feed-load-btn{display:block;margin:15px auto;padding:11px 24px;border:1px solid rgba(216,181,109,.35);border-radius:12px;background:rgba(216,181,109,.08);color:var(--gold2)}
+.feed-ending{margin:36px auto 10px;padding:38px 18px;text-align:center;border:1px solid rgba(216,181,109,.22);border-radius:22px;background:radial-gradient(ellipse at 50% 0%,rgba(216,181,109,.12),transparent 65%),linear-gradient(145deg,rgba(17,42,62,.8),rgba(7,21,35,.92));box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.ending-mark{display:block;color:var(--gold);font-size:28px;margin-bottom:12px}
+.feed-ending strong{display:block;color:#f6e7c3;font-size:17px}
+.feed-ending p{color:#aebdc8;font-size:12px;line-height:1.9;margin:10px 0 18px}
+.ending-line{display:block;width:70px;height:1px;margin:0 auto 14px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.feed-ending small{font-size:9px;letter-spacing:1.5px;color:#8094a4}
 .ad-slot{max-width:970px;margin:0 auto 28px;min-height:0}
 .ad-card{min-height:90px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 24px;border:1px solid rgba(216,181,109,.42);border-radius:17px;background:linear-gradient(110deg,#102b40,#0b1c2d 60%,#172c3c);overflow:hidden;position:relative}
 .ad-card:before{content:"";position:absolute;inset:0 auto 0 0;width:34%;background:linear-gradient(90deg,rgba(216,181,109,.09),transparent);pointer-events:none}
@@ -97,7 +115,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#172e40;border:1px solid var(--line);color:#f5e6c2;padding:12px 18px;border-radius:12px;font-size:12px;z-index:20;transition:.25s;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .hidden{display:none!important}
-@media(max-width:760px){.nav{height:70px}.navlinks{display:none;position:absolute;top:70px;right:20px;left:20px;padding:18px;background:#0c2235;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}.menu{display:block}.navcta{display:none}.hero{padding:67px 0 48px}h1{letter-spacing:-.8px}.searchbox{height:60px;padding:0 12px;gap:8px}.searchbtn{min-width:83px;padding:13px 14px}.searchbox input{font-size:14px}.searchmeta{font-size:10px}.ad-card{padding:13px 15px;min-height:82px}.ad-title{font-size:15px}.ad-sub{font-size:10px}.ad-action{padding:10px 12px;font-size:10px}.ad-image{width:76px;height:54px}.feature-grid{grid-template-columns:1fr}.feature{display:flex;gap:14px;align-items:flex-start}.feature-icon{flex:none}.feature h3{margin:2px 0 6px}.result{padding:13px;gap:12px}.thumb{width:76px;height:72px}.result-title{font-size:14px}.result-desc{font-size:11px}.foot{justify-content:center;text-align:center}}
+@media(max-width:760px){.feed-heading{align-items:flex-start;flex-direction:column}.topic-tabs{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:0 2px 8px}.topic-tabs span{flex:none}.topic-tabs button{flex:none}.feed-count{align-self:flex-start}.nav{height:70px}.navlinks{display:none;position:absolute;top:70px;right:20px;left:20px;padding:18px;background:#0c2235;border:1px solid var(--line);border-radius:16px;flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}.menu{display:block}.navcta{display:none}.hero{padding:67px 0 48px}h1{letter-spacing:-.8px}.searchbox{height:60px;padding:0 12px;gap:8px}.searchbtn{min-width:83px;padding:13px 14px}.searchbox input{font-size:14px}.searchmeta{font-size:10px}.ad-card{padding:13px 15px;min-height:82px}.ad-title{font-size:15px}.ad-sub{font-size:10px}.ad-action{padding:10px 12px;font-size:10px}.ad-image{width:76px;height:54px}.feature-grid{grid-template-columns:1fr}.feature{display:flex;gap:14px;align-items:flex-start}.feature-icon{flex:none}.feature h3{margin:2px 0 6px}.result{padding:13px;gap:12px}.thumb{width:76px;height:72px}.result-title{font-size:14px}.result-desc{font-size:11px}.foot{justify-content:center;text-align:center}}
 @media(max-width:390px){.wrap{width:calc(100% - 26px)}.brandname{font-size:19px}.searchbtn{min-width:72px;padding:12px 10px}.ad-action{font-size:9px}.ad-title{font-size:13px}.ad-sub{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
@@ -165,7 +183,13 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
    </div>
   </form>
   <div class="searchmeta"><span><i class="live-dot"></i> بحث مباشر في فهرس AQX</span><span>نتائج عامة • مصادر متعددة</span></div>
-  <div class="quick" id="quickSearch"><span>ابدأ باقتراح:</span><button type="button" data-q="التكنولوجيا">التكنولوجيا</button><button type="button" data-q="التعليم">التعليم</button><button type="button" data-q="الذكاء الاصطناعي">الذكاء الاصطناعي</button><button type="button" data-q="الصحة">الصحة</button></div>
+  <div class="quick topic-tabs" id="quickSearch"><span>استكشف حسب الموضوع:</span>
+  <button type="button" data-q="الأخبار">الأخبار</button><button type="button" data-q="التكنولوجيا">التكنولوجيا</button>
+  <button type="button" data-q="الذكاء الاصطناعي">الذكاء الاصطناعي</button><button type="button" data-q="التعليم">التعليم</button>
+  <button type="button" data-q="الصحة">الصحة</button><button type="button" data-q="الاقتصاد">الاقتصاد</button>
+  <button type="button" data-q="الثقافة">الثقافة</button><button type="button" data-q="الرياضة">الرياضة</button>
+  <button type="button" data-q="البرمجة">البرمجة</button><button type="button" data-q="ريادة الأعمال">ريادة الأعمال</button>
+ </div>
  </div>
 </section>
 
@@ -182,6 +206,21 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </section>
 </main>
 
+<section class="wrap home-feed" id="homeFeed" data-page="home">
+ <div class="feed-section">
+  <div class="feed-heading"><div><div class="section-kicker" style="text-align:right">LATEST FROM AQX SOURCES</div><h2 class="feed-title">أحدث المنشورات</h2><p class="feed-subtitle">أحدث مقال أو صفحة منشورة من كل منصة مسجلة في نبراس.</p></div><span class="feed-count" id="latestFeedCount">جارٍ التحديث</span></div>
+  <div class="results-grid" id="latestFeedList"></div>
+  <div class="empty" id="latestFeedEmpty" hidden>لا توجد منشورات عامة من المنصات حتى الآن. سيظهر أحدث محتوى تلقائيًا فور نشره وإتاحته في فهرس AQX.</div>
+ </div>
+ <div class="feed-section random-section">
+  <div class="feed-heading"><div><div class="section-kicker" style="text-align:right">DISCOVER MORE</div><h2 class="feed-title">اكتشف المزيد</h2><p class="feed-subtitle">محتوى متنوع بترتيب عشوائي، ويتجدد مع كل زيارة.</p></div><span class="feed-count">عرض متواصل</span></div>
+  <div class="results-grid" id="randomFeedList"></div>
+  <div class="feed-loading" id="randomFeedLoading" hidden><span class="spinner"></span> جارٍ تحميل المزيد من المحتوى...</div>
+  <div class="feed-sentinel" id="randomFeedSentinel" aria-hidden="true"></div>
+  <button class="feed-load-btn" id="randomFeedFallback" type="button" hidden>تحميل المزيد</button>
+  <div class="feed-ending" id="randomFeedEnd" hidden><span class="ending-mark">✧</span><strong>وصلت إلى آخر ما لدينا حاليًا</strong><p>استمتعت برحلتك في نبراس؟ عد لاحقًا لاكتشاف منشورات جديدة من منصات AQX.</p><span class="ending-line"></span><small>نهاية المحتوى المتاح · AQX NEBRAS</small></div>
+ </div>
+</section>
 
 <section class="wrap panel-section" id="rating" data-page="rating">
  <div class="panel-card"><div class="section-kicker" style="text-align:right">NEBRAS TRUST SCORE</div><h2 class="panel-title">تقييم محرك نبراس AQX</h2><p class="panel-muted">تقييمات الزوار المعتمدة فقط هي التي تدخل في المتوسط. المراجعات الجديدة لا تظهر قبل المراجعة والاعتماد.</p>
@@ -200,7 +239,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 <section class="wrap panel-section" id="history" data-page="history"><div class="panel-card"><div class="history-head"><div><h2 class="panel-title">سجل البحث الكامل</h2><p class="panel-muted">كل عمليات البحث التي تجريها من هذا المتصفح، مرتبة من الأحدث إلى الأقدم.</p></div><button class="clear-btn" id="clearHistoryBtn" type="button">مسح السجل</button></div><div class="review-list" id="historyList"></div></div></section>
 <section class="wrap panel-section" id="report" data-page="report"><div class="panel-card"><h2 class="panel-title">الإبلاغ عن مشكلة</h2><p class="panel-muted">لو واجهت مشكلة في البحث أو إعلانًا مضللًا أو محتوى غير مناسب، أرسل بلاغك من خلال <a href="https://alqurmanix.com" target="_blank" rel="noopener" style="color:var(--gold2);text-decoration:underline">بوابة AQX</a> مع وصف المشكلة والرابط إن وجد.</p></div></section>
 
-<section class="features" id="features" data-page="home">
+<section class="features" id="features" data-page="about">
  <div class="wrap">
   <div class="section-kicker">AQX SEARCH EXPERIENCE</div>
   <h2 class="section-title">بحث أذكى. وصول أوضح.</h2>
@@ -233,6 +272,7 @@ const AQX_CONFIG = Object.freeze({
   reviewFeedEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-review-feed",
   reviewSubmitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-submit-review",
   statsEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-public-stats",
+  homeFeedEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-home-feed",
   visitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-pageview",
   linkSlug: "nebras-aqx-search",
   publishableKey: "sb_publishable_qFdDHua0CEsCD-h63wtv-g_3LTHVrMC",
@@ -375,6 +415,82 @@ function createResult(item){
   save.addEventListener("click",()=>toggleSavedItem(item,save));actions.append(save);
   main.append(title,desc,meta,actions);article.append(main);return article;
 }
+const homeFeedState={loaded:false,loadingLatest:false,loadingRandom:false,offset:0,hasMore:true,seed:"",featuredIds:[],seenIds:new Set(),observer:null};
+async function homeFeedRequest(payload){
+  const response=await fetch(AQX_CONFIG.homeFeedEndpoint,{method:"POST",mode:"cors",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify(payload)});
+  const data=await response.json();
+  if(!response.ok||!data.ok)throw new Error(data.error||"تعذر تحميل محتوى الصفحة الرئيسية");
+  return data;
+}
+function renderHomeLatest(items){
+  const list=$("latestFeedList");list.replaceChildren();
+  homeFeedState.featuredIds=(items||[]).map(x=>x.link_id).filter(Boolean);
+  $("latestFeedCount").textContent=(items||[]).length.toLocaleString("ar-EG")+" منصة بها محتوى";
+  $("latestFeedEmpty").hidden=!!(items||[]).length;
+  (items||[]).forEach(item=>list.append(createResult(item)));
+}
+function finishRandomFeed(){
+  $("randomFeedLoading").hidden=true;
+  $("randomFeedEnd").hidden=false;
+  $("randomFeedSentinel").hidden=true;
+  $("randomFeedFallback").hidden=true;
+  homeFeedState.hasMore=false;
+}
+async function loadRandomFeed(){
+  if(homeFeedState.loadingRandom||!homeFeedState.hasMore)return;
+  homeFeedState.loadingRandom=true;$("randomFeedLoading").hidden=false;
+  $("randomFeedEnd").hidden=true;
+  try{
+    const data=await homeFeedRequest({mode:"random",seed:homeFeedState.seed,limit:24,offset:homeFeedState.offset,exclude_ids:homeFeedState.featuredIds});
+    const rows=Array.isArray(data.items)?data.items:[];
+    homeFeedState.offset+=rows.length;
+    const list=$("randomFeedList");let added=0;
+    rows.forEach(item=>{
+      const id=item.link_id||item.slug||item.destination_url;
+      if(id&&homeFeedState.seenIds.has(id))return;
+      if(id)homeFeedState.seenIds.add(id);
+      list.append(createResult(item));added++;
+    });
+    homeFeedState.hasMore=!!data.has_more;
+    if(!homeFeedState.hasMore)finishRandomFeed();
+    else if(!added&&rows.length===0)finishRandomFeed();
+  }catch(error){
+    toast(error.message||"تعذر تحميل المزيد من المحتوى");
+    $("randomFeedFallback").hidden=false;
+  }finally{
+    homeFeedState.loadingRandom=false;$("randomFeedLoading").hidden=true;
+  }
+}
+function setupRandomFeedObserver(){
+  if(homeFeedState.observer)homeFeedState.observer.disconnect();
+  if(!("IntersectionObserver" in window)){
+    $("randomFeedFallback").hidden=false;return;
+  }
+  homeFeedState.observer=new IntersectionObserver(entries=>{
+    if(entries.some(x=>x.isIntersecting))loadRandomFeed();
+  },{root:null,rootMargin:"900px 0px",threshold:0});
+  homeFeedState.observer.observe($("randomFeedSentinel"));
+}
+async function loadHomeFeed(){
+  if(homeFeedState.loaded||homeFeedState.loadingLatest)return;
+  homeFeedState.loadingLatest=true;
+  $("latestFeedCount").textContent="جارٍ التحديث";
+  try{
+    const data=await homeFeedRequest({mode:"latest"});
+    renderHomeLatest(Array.isArray(data.items)?data.items:[]);
+    homeFeedState.seed=(crypto?.getRandomValues?Array.from(crypto.getRandomValues(new Uint32Array(4))).join("-"):String(Date.now()))+"-"+Math.random().toString(36).slice(2);
+    homeFeedState.offset=0;homeFeedState.hasMore=true;homeFeedState.seenIds=new Set();
+    homeFeedState.loaded=true;setupRandomFeedObserver();
+    await loadRandomFeed();
+  }catch(error){
+    $("latestFeedCount").textContent="تعذر التحديث";
+    $("latestFeedEmpty").hidden=false;
+    $("latestFeedEmpty").textContent=error.message||"تعذر تحميل أحدث المنشورات.";
+    toast("تعذر تحديث عرض الصفحة الرئيسية حاليًا.");
+  }finally{homeFeedState.loadingLatest=false;}
+}
+$("randomFeedFallback").addEventListener("click",loadRandomFeed);
+
 function renderSuggestions(list){
   const box=$("suggestions");box.replaceChildren();
   if(!Array.isArray(list)||!list.length){box.classList.add("hidden");return;}
@@ -447,6 +563,7 @@ function showPage(page){
   document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x.dataset.pageTarget===page));
   if(page==="bookmarks")renderBookmarks();
   if(page==="history")renderHistory();
+  if(page==="home")loadHomeFeed();
   closeSidebar();
   window.scrollTo({top:0,behavior:"smooth"});
   if(location.hash!=="#"+page)window.history.replaceState(null,"","#"+page);
