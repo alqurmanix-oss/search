@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#071523">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<meta name="apple-mobile-web-app-title" content="نبراس AQX">
 <meta name="description" content="نبراس AQX — محرك بحث عربي يجمع المعرفة والمحتوى من منصات متعددة في تجربة بحث واحدة.">
 <meta name="robots" content="index,follow">
 <title>نبراس AQX | بوابتك إلى المعرفة</title>
@@ -126,7 +131,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 /* AQX final navigation and trust center */
 .sidebar{position:fixed;z-index:30;right:0;top:0;bottom:0;width:230px;padding:22px 15px;background:linear-gradient(180deg,#0b2032,#071523);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:9px;box-shadow:-16px 0 45px rgba(0,0,0,.18)}
 .side-brand{display:flex;align-items:center;gap:10px;padding:8px 9px 22px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}.side-brand b{color:var(--gold2);font-size:15px}.side-brand small{display:block;color:#8ea0ad;font-size:9px;margin-top:4px}
-.side-link{display:flex;align-items:center;gap:12px;padding:12px 13px;border:1px solid transparent;border-radius:12px;color:#c1ccd4;font-size:12px;transition:.2s}.side-link span{width:22px;text-align:center;color:var(--gold2);font-size:16px}.side-link:hover,.side-link.active{background:rgba(216,181,109,.09);border-color:var(--line);color:#fff}.side-note{margin-top:auto;padding:13px;border:1px solid rgba(216,181,109,.14);border-radius:13px;color:#8ea0ad;font-size:10px;line-height:1.9}.side-note b{color:var(--gold2)}
+.side-link{display:flex;align-items:center;gap:12px;padding:12px 13px;border:1px solid transparent;border-radius:12px;color:#c1ccd4;font-size:12px;transition:.2s}.side-link span{width:22px;text-align:center;color:var(--gold2);font-size:16px}.side-link:hover,.side-link.active{background:rgba(216,181,109,.09);border-color:var(--line);color:#fff}
+.install-app-link{width:100%;text-align:right;background:transparent;cursor:pointer;font:inherit}.side-note{margin-top:auto;padding:13px;border:1px solid rgba(216,181,109,.14);border-radius:13px;color:#8ea0ad;font-size:10px;line-height:1.9}.side-note b{color:var(--gold2)}
 .sidebar{transform:translateX(105%);transition:transform .25s ease}
 .sidebar.open{transform:translateX(0)}
 .drawer-shade{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:29}
@@ -165,6 +171,7 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
  <a class="side-link" href="#about" data-page-target="about"><span>ⓘ</span>عن المحرك</a>
  <a class="side-link" href="#report" data-page-target="report"><span>⚑</span>الإبلاغ عن مشكلة</a>
  <a class="side-link" href="#settings" data-page-target="settings"><span>⚙</span>الإعدادات</a>
+<button class="side-link install-app-link" id="installAppBtn" type="button"><span>▣</span>إضافة إلى سطح المكتب</button>
  <div class="side-note"><b>حماية AQX</b><br>تُستبعد الطلبات الآلية والأحداث المشبوهة من العدّ والإحصائيات، وتخضع مراجعات الزوار للاعتماد قبل النشر.</div>
 </aside>
 <header>
@@ -351,21 +358,41 @@ function renderExternalTag(tag){
   if(location.hostname!=="search.alqurmanix.com"||tag.allowed_host!=="search.alqurmanix.com"||tag.is_enabled===false)return null;
   const code=typeof tag.script_code==="string"?tag.script_code:"";
   if(!code||code.length>12000)return null;
-  const wrap=document.createElement("div");wrap.className="external-ad-wrap";
+  const provider=String(tag.provider_key||"");
+  const allowedHosts=provider==="adsterra"?["https://bicea.org/"]:provider==="monetag"?["https://al5sm.com/","https://nap5k.com/","https://n6wxm.com/"]:[];
+  if(!allowedHosts.length||!allowedHosts.some(host=>code.includes(host)))return null;
+  const wrap=document.createElement("div");wrap.className="external-ad-wrap";wrap.dataset.provider=provider;
   const key=String(tag.placement_key||"").toLowerCase();
   let size="";
   if(key.includes("728")||key.includes("banner"))size="728x90";
   else if(key.includes("300")||key.includes("250"))size="300x250";
   else if(key.includes("320")||key.includes("mobile"))size="320x50";
   wrap.dataset.size=size;
-  const frame=document.createElement("iframe");frame.className="external-ad-frame";
-  frame.title="إعلان خارجي";frame.loading="lazy";frame.referrerPolicy="strict-origin";
-  frame.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox");
-  const height=size==="300x250"?260:size==="728x90"?110:size==="320x50"?80:180;
-  frame.style.height=height+"px";
-  const safeCode=code.replace(/<\/script/gi,"<\\/script");
-  frame.srcdoc="<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><style>html,body{margin:0;padding:0;background:transparent;overflow:hidden}body{display:flex;justify-content:center;align-items:flex-start;min-height:1px}</style></head><body>"+safeCode+"</body></html>";
-  wrap.append(frame);return wrap;
+  const template=document.createElement("template");template.innerHTML=code;
+  const scripts=Array.from(template.content.querySelectorAll("script"));
+  template.content.querySelectorAll("script").forEach(node=>node.remove());
+  wrap.append(template.content.cloneNode(true));
+  wrap._aqxScripts=scripts;
+  return wrap;
+}
+function activateExternalTag(wrap){
+  if(!wrap||wrap.dataset.activated==="true"||location.hostname!=="search.alqurmanix.com")return;
+  wrap.dataset.activated="true";
+  const scripts=Array.isArray(wrap._aqxScripts)?wrap._aqxScripts:[];
+  scripts.forEach(source=>{
+    const src=source.getAttribute("src");
+    if(src){
+      let parsed;try{parsed=new URL(src,location.href);}catch{return;}
+      const provider=wrap.dataset.provider;
+      const allowed=provider==="adsterra"?parsed.origin==="https://bicea.org":provider==="monetag"?["https://al5sm.com","https://nap5k.com","https://n6wxm.com"].includes(parsed.origin):false;
+      if(!allowed)return;
+    }
+    const script=document.createElement("script");
+    Array.from(source.attributes).forEach(attr=>script.setAttribute(attr.name,attr.value));
+    script.text=source.textContent||"";
+    wrap.append(script);
+  });
+  delete wrap._aqxScripts;
 }
 function renderExternalAds(data){
   if(location.hostname!=="search.alqurmanix.com")return;
@@ -445,7 +472,7 @@ function appendHomeFeedItem(item,list){
     const tag=homeFeedState.externalTags[homeFeedState.externalTagIndex%homeFeedState.externalTags.length];
     homeFeedState.externalTagIndex++;
     const ad=renderExternalTag(tag);
-    if(ad){ad.classList.add("home-feed-ad");ad.setAttribute("aria-label","إعلان");list.append(ad);}
+    if(ad){ad.classList.add("home-feed-ad");ad.setAttribute("aria-label","إعلان");list.append(ad);activateExternalTag(ad);}
   }
 }
 function renderHomeLatest(items,waiting){
@@ -703,6 +730,31 @@ $("voiceBtn").addEventListener("click",()=>{
 loadReviews();loadPublicStats();setInterval(loadPublicStats,15000);recordQualifiedVisit();
 $("year").textContent=new Date().getFullYear();
 applyPreferences(readPreferences());
+let aqxInstallPrompt=null;
+const aqxInstallButton=$("installAppBtn");
+window.addEventListener("beforeinstallprompt",event=>{
+  event.preventDefault();aqxInstallPrompt=event;
+  if(aqxInstallButton)aqxInstallButton.setAttribute("aria-label","إضافة نبراس إلى الشاشة الرئيسية");
+});
+window.addEventListener("appinstalled",()=>{
+  aqxInstallPrompt=null;toast("تم تثبيت نبراس AQX على جهازك");
+});
+aqxInstallButton?.addEventListener("click",async()=>{
+  if(aqxInstallPrompt){
+    aqxInstallPrompt.prompt();
+    const choice=await aqxInstallPrompt.userChoice;
+    aqxInstallPrompt=null;
+    if(choice?.outcome==="accepted")toast("جارٍ إضافة نبراس إلى جهازك");
+    else toast("يمكنك تثبيت نبراس لاحقًا من قائمة المتصفح");
+    return;
+  }
+  const standalone=window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
+  if(standalone){toast("نبراس AQX مضاف بالفعل إلى جهازك");return;}
+  toast(/iPhone|iPad|iPod/i.test(navigator.userAgent)?"من Safari اضغط مشاركة ثم إضافة إلى الشاشة الرئيسية":"من قائمة المتصفح ⋮ اختر تثبيت التطبيق أو إضافة إلى الشاشة الرئيسية");
+});
+if("serviceWorker" in navigator&&location.protocol==="https:"){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(error=>console.warn("AQX service worker:",error)));
+}
 showPage(location.hash.replace("#","")||"home");
 </script>
 </body>
