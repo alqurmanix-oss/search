@@ -59,6 +59,10 @@ h1 em{font-style:normal;color:var(--gold2);text-shadow:0 8px 38px rgba(216,181,1
 .feed-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
 .feed-title{font-size:clamp(21px,3vw,28px);margin:7px 0;color:#f5e7c9}
 .feed-subtitle{font-size:12px;color:#91a4b3;margin:0;line-height:1.8}
+.platform-waiting{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.platform-wait-chip{display:flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.025);font-size:10px}
+.platform-wait-chip strong{color:#c5d1d9;font-weight:700}
+.platform-wait-chip span{color:#7f929f}
 .feed-count{flex:none;color:#d8b56d;border:1px solid rgba(216,181,109,.25);background:rgba(216,181,109,.06);border-radius:999px;padding:7px 11px;font-size:10px}
 .random-section{padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
 .feed-loading{text-align:center;padding:22px;color:var(--gold2);font-size:12px}
@@ -210,6 +214,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  <div class="feed-section">
   <div class="feed-heading"><div><div class="section-kicker" style="text-align:right">LATEST FROM AQX SOURCES</div><h2 class="feed-title">أحدث المنشورات</h2><p class="feed-subtitle">أحدث مقال أو صفحة منشورة من كل منصة مسجلة في نبراس.</p></div><span class="feed-count" id="latestFeedCount">جارٍ التحديث</span></div>
   <div class="results-grid" id="latestFeedList"></div>
+  <div class="platform-waiting" id="latestPlatformsWaiting"></div>
   <div class="empty" id="latestFeedEmpty" hidden>لا توجد منشورات عامة من المنصات حتى الآن. سيظهر أحدث محتوى تلقائيًا فور نشره وإتاحته في فهرس AQX.</div>
  </div>
  <div class="feed-section random-section">
@@ -422,12 +427,20 @@ async function homeFeedRequest(payload){
   if(!response.ok||!data.ok)throw new Error(data.error||"تعذر تحميل محتوى الصفحة الرئيسية");
   return data;
 }
-function renderHomeLatest(items){
+function renderHomeLatest(items,waiting){
   const list=$("latestFeedList");list.replaceChildren();
+  const pending=$("latestPlatformsWaiting");pending.replaceChildren();
   homeFeedState.featuredIds=(items||[]).map(x=>x.link_id).filter(Boolean);
-  $("latestFeedCount").textContent=(items||[]).length.toLocaleString("ar-EG")+" منصة بها محتوى";
+  const total=Number(homeFeedState.platformsTotal||((items||[]).length+(waiting||[]).length));
+  $("latestFeedCount").textContent=(items||[]).length.toLocaleString("ar-EG")+" من "+total.toLocaleString("ar-EG")+" منصة";
   $("latestFeedEmpty").hidden=!!(items||[]).length;
   (items||[]).forEach(item=>list.append(createResult(item)));
+  (waiting||[]).forEach(platform=>{
+    const chip=document.createElement("div");chip.className="platform-wait-chip";
+    const name=document.createElement("strong");name.textContent=safeText(platform.name,"منصة AQX");
+    const note=document.createElement("span");note.textContent="بانتظار أول منشور";
+    chip.append(name,note);pending.append(chip);
+  });
 }
 function finishRandomFeed(){
   $("randomFeedLoading").hidden=true;
@@ -477,8 +490,9 @@ async function loadHomeFeed(){
   $("latestFeedCount").textContent="جارٍ التحديث";
   try{
     const data=await homeFeedRequest({mode:"latest"});
-    renderHomeLatest(Array.isArray(data.items)?data.items:[]);
-    homeFeedState.seed=(crypto?.getRandomValues?Array.from(crypto.getRandomValues(new Uint32Array(4))).join("-"):String(Date.now()))+"-"+Math.random().toString(36).slice(2);
+    homeFeedState.platformsTotal=Number(data.platforms_total||0);
+    renderHomeLatest(Array.isArray(data.items)?data.items:[],Array.isArray(data.platforms_waiting)?data.platforms_waiting:[]);
+    homeFeedState.seed=(window.crypto?.getRandomValues?Array.from(window.crypto.getRandomValues(new Uint32Array(4))).join("-"):String(Date.now()))+"-"+Math.random().toString(36).slice(2);
     homeFeedState.offset=0;homeFeedState.hasMore=true;homeFeedState.seenIds=new Set();
     homeFeedState.loaded=true;setupRandomFeedObserver();
     await loadRandomFeed();
