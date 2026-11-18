@@ -404,7 +404,7 @@ function renderExternalAds(data){
     if(key.includes("custom-1")||key.includes("728")||key.includes("top"))target=slots.top;
     else if(key.includes("custom-2")||key.includes("bottom")||key.includes("monetag-2"))target=slots.bottom;
     else if(key.includes("monetag-3")||key.includes("320")||key.includes("mobile"))target=slots.bottom;
-    const frame=renderExternalTag(tag);if(frame)target.append(frame);
+    const frame=renderExternalTag(tag);if(frame){target.append(frame);activateExternalTag(frame);}
   });
 }
 function renderAds(data){
@@ -479,6 +479,11 @@ function renderHomeLatest(items,waiting){
   const list=$("latestFeedList");list.replaceChildren();
   homeFeedState.featuredIds=(items||[]).map(x=>x.link_id).filter(Boolean);
   (items||[]).forEach(item=>appendHomeFeedItem(item,list));
+  if(!(items||[]).length&&homeFeedState.externalTags.length&&location.hostname==="search.alqurmanix.com"){
+    const tag=homeFeedState.externalTags[0];
+    const ad=renderExternalTag(tag);
+    if(ad){ad.classList.add("home-feed-ad");ad.setAttribute("aria-label","إعلان");list.append(ad);activateExternalTag(ad);homeFeedState.externalTagIndex=1;}
+  }
 }
 function finishRandomFeed(){
   $("randomFeedLoading").hidden=true;
