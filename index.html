@@ -138,6 +138,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
 .history-query{border:0;background:transparent;color:var(--gold2);font-weight:700;text-align:right;padding:0;cursor:pointer}
 .history-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .panel-section{padding:46px 0 20px;scroll-margin-top:24px}.panel-card{background:linear-gradient(145deg,rgba(17,42,62,.9),rgba(9,27,43,.92));border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}.panel-title{font-size:22px;margin:0 0 8px;color:#f5e7c8}.panel-muted{font-size:12px;color:#9eafbb;line-height:1.9;margin:0 0 18px}.rating-summary{display:flex;align-items:center;gap:15px;flex-wrap:wrap}.rating-big{font-size:42px;font-weight:900;color:var(--gold2)}.stars{color:#e9c779;letter-spacing:2px}.review-list{display:grid;gap:12px}.review-item{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:15px;background:rgba(255,255,255,.025)}.review-item h4{margin:0 0 7px;color:#f0dfb8;font-size:13px}.review-item p{margin:7px 0;color:#b5c1ca;font-size:12px;line-height:1.9}.review-meta{font-size:10px;color:#8396a4}.review-form{display:grid;gap:11px}.review-form input,.review-form textarea{width:100%;border:1px solid rgba(216,181,109,.23);background:#0a1e2e;color:#f6f0e4;border-radius:11px;padding:12px;font:inherit;font-size:12px}.review-form textarea{min-height:100px;resize:vertical}.rating-pick{display:flex;gap:7px;direction:ltr;justify-content:flex-end}.rating-pick button{background:transparent;border:1px solid var(--line);border-radius:9px;color:#71818c;padding:7px 10px;font-size:19px}.rating-pick button.selected{color:#f0c96f;background:rgba(216,181,109,.1)}.primary-btn{border:0;border-radius:11px;padding:12px 18px;background:linear-gradient(135deg,#f0d79a,#c69d50);color:#172638;font-weight:900}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat-box{padding:17px;border:1px solid rgba(216,181,109,.16);border-radius:14px;background:rgba(255,255,255,.025)}.stat-box b{display:block;color:var(--gold2);font-size:22px;margin-bottom:5px}.stat-box span{font-size:10px;color:#9eafbb}.fineprint{font-size:10px;color:#8293a0;line-height:1.8;margin-top:12px}
+.settings-list{display:grid;gap:0}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 2px;border-bottom:1px solid rgba(255,255,255,.07);cursor:pointer}.setting-row:last-child{border-bottom:0}.setting-row b{display:block;color:#f0dfb8;font-size:13px}.setting-row small{display:block;color:#91a4b3;font-size:11px;line-height:1.8;margin-top:5px}.setting-row input{width:20px;height:20px;accent-color:#d8b56d;flex:none}.settings-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-motion *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
 @media(max-width:900px){body{padding-right:0}.sidebar{transform:translateX(105%);transition:transform .25s;width:min(290px,84vw)}.sidebar.open{transform:translateX(0)}.drawer-shade.open{display:block}.menu{display:block}.navlinks{display:none}.navcta{display:none}.stat-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:901px){.menu{display:block}}
 .query-analytics{margin-top:24px}.query-analytics h3{font-size:16px;color:var(--gold2)}.query-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.query-columns>div{border:1px solid rgba(216,181,109,.14);border-radius:13px;padding:12px;background:rgba(255,255,255,.02)}.query-columns h4{font-size:11px;color:#d9c38f;margin:0 0 8px}.query-columns ol{margin:0;padding:0 20px 0 0;color:#b8c5ce;font-size:11px;line-height:2}.query-columns li{overflow-wrap:anywhere}.external-ad-frame{display:block;width:100%;min-height:100px;border:0;border-radius:12px;background:rgba(255,255,255,.02);margin:10px 0}.external-ad-wrap{width:100%;max-width:100%;overflow:hidden;margin:12px auto}.external-ad-wrap[data-size="728x90"]{max-width:728px;min-height:90px}.external-ad-wrap[data-size="300x250"]{max-width:300px;min-height:250px}.external-ad-wrap[data-size="320x50"]{max-width:320px;min-height:60px}@media(max-width:760px){.query-columns{grid-template-columns:1fr 1fr}}
@@ -151,6 +153,8 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  <div class="side-brand"><span class="brandmark" style="width:38px;height:38px;border-radius:12px">◇</span><span><b>نبراس AQX</b><small>مركز البحث والثقة</small></span></div>
  <a class="side-link active" href="#home" data-page-target="home"><span>⌂</span>الرئيسية</a>
  <a class="side-link" href="#search" data-page-target="search"><span>⌕</span>البحث</a>
+ <a class="side-link" href="#live-search" data-page-target="live-search"><span>◉</span>ما يبحث عنه الآخرون الآن</a>
+ <a class="side-link" href="#popular-searches" data-page-target="popular-searches"><span>↗</span>الأكثر بحثًا</a>
  <a class="side-link" href="#bookmarks" data-page-target="bookmarks"><span>☆</span>المحفوظات</a>
  <a class="side-link" href="#history" data-page-target="history"><span>◷</span>سجل البحث الكامل</a>
  <a class="side-link" href="#rating" data-page-target="rating"><span>★</span>تقييم المحرك</a>
@@ -159,6 +163,7 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  <a class="side-link" href="#ad-info" data-page-target="ad-info"><span>▣</span>الإعلانات</a>
  <a class="side-link" href="#about" data-page-target="about"><span>ⓘ</span>عن المحرك</a>
  <a class="side-link" href="#report" data-page-target="report"><span>⚑</span>الإبلاغ عن مشكلة</a>
+ <a class="side-link" href="#settings" data-page-target="settings"><span>⚙</span>الإعدادات</a>
  <div class="side-note"><b>حماية AQX</b><br>تُستبعد الطلبات الآلية والأحداث المشبوهة من العدّ والإحصائيات، وتخضع مراجعات الزوار للاعتماد قبل النشر.</div>
 </aside>
 <header>
@@ -238,7 +243,14 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 35px;color:#829
  </div>
  <div class="panel-card"><h3 class="panel-title" style="font-size:17px">أحدث المراجعات المعتمدة</h3><div class="review-list" id="reviewList"><div class="review-meta">جارٍ تحميل المراجعات...</div></div></div>
 </section>
-<section class="wrap panel-section" id="statistics" data-page="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">مؤشرات عامة من سجلات AQX المتاحة. استبعاد الروبوتات يعتمد على آليات الكشف المسجلة ولا يمثل ضمانًا مطلقًا لمنع كل الزيارات الآلية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><div class="query-analytics"><h3>عبارات البحث الأكثر استخدامًا</h3><div class="query-columns"><div><h4>مباشر · آخر 5 دقائق</h4><ol id="liveSearchTerms"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 24 ساعة</h4><ol id="topSearchToday"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 7 أيام</h4><ol id="topSearchWeek"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 30 يومًا</h4><ol id="topSearchMonth"><li>لا توجد بيانات بعد</li></ol></div><div><h4>آخر 365 يومًا</h4><ol id="topSearchYear"><li>لا توجد بيانات بعد</li></ol></div></div></div><p class="fineprint" id="statsUpdated">في انتظار تحميل الإحصائيات.</p></div></section>
+<section class="wrap panel-section" id="statistics" data-page="statistics"><div class="panel-card"><h2 class="panel-title">إحصائيات نبراس</h2><p class="panel-muted">مؤشرات عامة من سجلات AQX المتاحة. استبعاد الروبوتات يعتمد على آليات الكشف المسجلة ولا يمثل ضمانًا مطلقًا لمنع كل الزيارات الآلية.</p><div class="stat-grid"><div class="stat-box"><b id="statVisits">—</b><span>زيارات مسجلة</span></div><div class="stat-box"><b id="statSearches">—</b><span>عمليات بحث</span></div><div class="stat-box"><b id="statAdImpressions">—</b><span>ظهور إعلاني معتمد</span></div><div class="stat-box"><b id="statAdClicks">—</b><span>نقرات إعلانية معتمدة</span></div></div><p class="fineprint" id="statsUpdated">في انتظار تحميل الإحصائيات.</p></div></section>
+<section class="wrap panel-section" id="live-search" data-page="live-search"><div class="panel-card"><h2 class="panel-title">ما يبحث عنه الآخرون الآن</h2><p class="panel-muted">عبارات البحث النشطة خلال آخر خمس دقائق، وتُحدّث تلقائيًا مع بيانات البحث المتاحة.</p><div class="query-columns"><div><h4>عمليات البحث المباشرة</h4><ol id="liveSearchTermsPage"><li>في انتظار البيانات</li></ol></div></div><p class="fineprint" id="liveSearchUpdated">يتم تحديث القائمة تلقائيًا.</p></div></section>
+<section class="wrap panel-section" id="popular-searches" data-page="popular-searches"><div class="panel-card"><h2 class="panel-title">الأكثر بحثًا</h2><p class="panel-muted">ترتيب عبارات البحث حسب تكرارها خلال الفترات الزمنية المختلفة.</p><div class="query-columns"><div><h4>آخر 24 ساعة</h4><ol id="topSearchTodayPage"><li>في انتظار البيانات</li></ol></div><div><h4>آخر 7 أيام</h4><ol id="topSearchWeekPage"><li>في انتظار البيانات</li></ol></div><div><h4>آخر 30 يومًا</h4><ol id="topSearchMonthPage"><li>في انتظار البيانات</li></ol></div><div><h4>آخر 365 يومًا</h4><ol id="topSearchYearPage"><li>في انتظار البيانات</li></ol></div></div><p class="fineprint" id="popularSearchUpdated">يتم تحديث القائمة تلقائيًا.</p></div></section>
+<section class="wrap panel-section" id="settings" data-page="settings"><div class="panel-card"><h2 class="panel-title">إعدادات نبراس</h2><p class="panel-muted">خصص طريقة عرض المحرك على هذا الجهاز. تُحفظ اختياراتك محليًا في المتصفح.</p><div class="settings-list">
+<label class="setting-row"><span><b>تقليل الحركة والمؤثرات</b><small>تقليل الحركات والانتقالات لتحسين الراحة أثناء التصفح.</small></span><input id="prefReduceMotion" type="checkbox"></label>
+<label class="setting-row"><span><b>فتح نتائج البحث في تبويب جديد</b><small>اترك المحرك مفتوحًا أثناء الانتقال إلى المصدر.</small></span><input id="prefNewTab" type="checkbox"></label>
+<label class="setting-row"><span><b>التأكيد قبل مسح سجل البحث</b><small>طلب تأكيد قبل حذف سجل البحث المحفوظ على هذا الجهاز.</small></span><input id="prefConfirmClear" type="checkbox"></label>
+</div><div class="settings-actions"><button class="clear-btn" id="resetPreferences" type="button">استعادة الإعدادات الافتراضية</button><span class="fineprint" id="settingsMessage" role="status">تُطبق التغييرات فورًا.</span></div></div></section>
 <section class="wrap panel-section" id="ad-info" data-page="ad-info"><div class="panel-card"><h2 class="panel-title">الإعلانات على نبراس</h2><p class="panel-muted">تُعرض الإعلانات وفق ترتيب شبكة AQX: الحملات المباشرة المؤهلة أولًا، ثم إعلانات AQX، ثم الإعلان الاحتياطي عند عدم توفر إعلان مؤهل. أحداث الإعلان تمر عبر التحقق ومراجعة مكافحة الاحتيال قبل اعتمادها إحصائيًا.</p></div></section>
 <section class="wrap panel-section" id="bookmarks" data-page="bookmarks"><div class="panel-card"><h2 class="panel-title">المحفوظات</h2><p class="panel-muted">الروابط التي تحفظها للرجوع إليها لاحقًا على هذا الجهاز.</p><div class="review-list" id="bookmarksList"></div></div></section>
 <section class="wrap panel-section" id="history" data-page="history"><div class="panel-card"><div class="history-head"><div><h2 class="panel-title">سجل البحث الكامل</h2><p class="panel-muted">كل عمليات البحث التي تجريها من هذا المتصفح، مرتبة من الأحدث إلى الأقدم.</p></div><button class="clear-btn" id="clearHistoryBtn" type="button">مسح السجل</button></div><div class="review-list" id="historyList"></div></div></section>
@@ -406,8 +418,8 @@ function createResult(item){
   const main=document.createElement("div");main.className="result-main";
   const title=document.createElement("a");title.className="result-title";title.textContent=safeText(item.title,"نتيجة بدون عنوان");
   const slug=safeText(item.slug,"");
-  if(slug){title.href=AQX_CONFIG.redirectEndpoint+"?slug="+encodeURIComponent(slug);title.target="_blank";title.rel="noopener noreferrer";}
-  else{const dest=safeHttps(item.destination_url);if(dest){title.href=dest;title.target="_blank";title.rel="noopener noreferrer";}}
+  if(slug){title.href=AQX_CONFIG.redirectEndpoint+"?slug="+encodeURIComponent(slug);title.target=readPreferences().newTab?"_blank":"_self";title.rel="noopener noreferrer";}
+  else{const dest=safeHttps(item.destination_url);if(dest){title.href=dest;title.target=readPreferences().newTab?"_blank":"_self";title.rel="noopener noreferrer";}}
   const desc=document.createElement("p");desc.className="result-desc";desc.textContent=safeText(item.description,"لا يتوفر وصف لهذه النتيجة.");
   const meta=document.createElement("div");meta.className="result-meta";
   const add=(text,cls="pill")=>{if(text){const s=document.createElement("span");s.className=cls;s.textContent=text;meta.append(s);}};
@@ -571,7 +583,7 @@ function openSidebar(){$("sidebar").classList.add("open");$("drawerShade").class
 $("menuBtn").addEventListener("click",()=>{$("sidebar").classList.contains("open")?closeSidebar():openSidebar();});
 $("drawerShade").addEventListener("click",closeSidebar);
 function showPage(page){
-  const valid=["home","search","bookmarks","history","rating","reviews","statistics","ad-info","about","report"];
+  const valid=["home","search","live-search","popular-searches","bookmarks","history","rating","reviews","statistics","ad-info","about","report","settings"];
   if(!valid.includes(page))page="home";
   document.querySelectorAll("[data-page]").forEach(el=>{
     const pages=(el.dataset.page||"").split(",").map(x=>x.trim());
@@ -580,6 +592,8 @@ function showPage(page){
   document.querySelectorAll(".side-link").forEach(x=>x.classList.toggle("active",x.dataset.pageTarget===page));
   if(page==="bookmarks")renderBookmarks();
   if(page==="history")renderHistory();
+  if(page==="settings")loadPreferences();
+  if(page==="live-search"||page==="popular-searches")loadPublicStats();
   if(page==="home")loadHomeFeed();
   closeSidebar();
   window.scrollTo({top:0,behavior:"smooth"});
@@ -607,17 +621,28 @@ async function loadPublicStats(){
     $("statAdImpressions").textContent=Number(d.ad_impressions||0).toLocaleString("ar-EG");
     $("statAdClicks").textContent=Number(d.ad_clicks||0).toLocaleString("ar-EG");
     const terms=d.top_searches||{};
-    renderSearchTermList("liveSearchTerms",terms.live,true);
-    renderSearchTermList("topSearchToday",terms.today);
-    renderSearchTermList("topSearchWeek",terms.week);
-    renderSearchTermList("topSearchMonth",terms.month);
-    renderSearchTermList("topSearchYear",terms.year);
-    $("statsUpdated").textContent="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");
+    renderSearchTermList("liveSearchTermsPage",terms.live,true);
+    renderSearchTermList("topSearchTodayPage",terms.today);
+    renderSearchTermList("topSearchWeekPage",terms.week);
+    renderSearchTermList("topSearchMonthPage",terms.month);
+    renderSearchTermList("topSearchYearPage",terms.year);
+    const updated="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");
+    $("statsUpdated").textContent=updated;
+    $("liveSearchUpdated").textContent=updated;
+    $("popularSearchUpdated").textContent=updated;
   }catch{$("statsUpdated").textContent="تعذر تحميل الإحصائيات وعبارات البحث حاليًا؛ ستظهر عند استجابة واجهة التقارير.";}}
 
 function isLikelyAutomated(){const ua=navigator.userAgent||"";return /bot|crawler|spider|headless|phantom|selenium|playwright|puppeteer|lighthouse|pagespeed|curl|wget|python-requests/i.test(ua)||navigator.webdriver===true;}
 function recordQualifiedVisit(){if(isLikelyAutomated()||!window.fetch||!window.crypto?.getRandomValues)return;const started=performance.now(),nonce=crypto.getRandomValues(new Uint32Array(4)).join("-");let sent=false;const send=()=>{if(sent||performance.now()-started<2500||document.visibilityState!=="visible")return;sent=true;fetch(AQX_CONFIG.visitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,nonce,elapsed_ms:Math.round(performance.now()-started)}),keepalive:true}).catch(()=>{});};document.addEventListener("visibilitychange",send);window.addEventListener("pagehide",send,{once:true});setTimeout(send,3000);}
-const STORAGE_KEYS={history:"aqx_nebras_search_history_v1",bookmarks:"aqx_nebras_bookmarks_v1"};
+const STORAGE_KEYS={history:"aqx_nebras_search_history_v1",bookmarks:"aqx_nebras_bookmarks_v1",preferences:"aqx_nebras_preferences_v1"};
+const DEFAULT_PREFERENCES={reduceMotion:false,newTab:true,confirmClear:true};
+function readPreferences(){try{return {...DEFAULT_PREFERENCES,...JSON.parse(localStorage.getItem(STORAGE_KEYS.preferences)||"{}")};}catch(_){return {...DEFAULT_PREFERENCES};}}
+function savePreferences(prefs){try{localStorage.setItem(STORAGE_KEYS.preferences,JSON.stringify(prefs));applyPreferences(prefs);$("settingsMessage").textContent="تم حفظ الإعدادات على هذا الجهاز.";return true;}catch(_){toast("تعذر حفظ الإعدادات في المتصفح.");return false;}}
+function applyPreferences(prefs){document.documentElement.classList.toggle("aqx-reduced-motion",!!prefs.reduceMotion);}
+function loadPreferences(){const p=readPreferences();$("prefReduceMotion").checked=!!p.reduceMotion;$("prefNewTab").checked=!!p.newTab;$("prefConfirmClear").checked=!!p.confirmClear;applyPreferences(p);}
+function updatePreference(){savePreferences({reduceMotion:$("prefReduceMotion").checked,newTab:$("prefNewTab").checked,confirmClear:$("prefConfirmClear").checked});}
+["prefReduceMotion","prefNewTab","prefConfirmClear"].forEach(id=>$(id).addEventListener("change",updatePreference));
+$("resetPreferences").addEventListener("click",()=>{savePreferences({...DEFAULT_PREFERENCES});loadPreferences();});
 function readLocal(key){try{const value=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(value)?value:[];}catch(_){return [];}}
 function writeLocal(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch(_){toast("تعذر الحفظ؛ قد تكون مساحة التخزين ممتلئة أو معطلة.");return false;}}
 function recordSearchHistory(query){
@@ -661,7 +686,7 @@ function renderHistory(){
     card.append(q,meta,remove);list.append(card);
   });
 }
-$("clearHistoryBtn").addEventListener("click",()=>{if(confirm("هل تريد مسح سجل البحث بالكامل من هذا الجهاز؟")){writeLocal(STORAGE_KEYS.history,[]);renderHistory();}});
+$("clearHistoryBtn").addEventListener("click",()=>{const prefs=readPreferences();if(prefs.confirmClear&&!confirm("هل تريد مسح سجل البحث بالكامل من هذا الجهاز؟"))return;writeLocal(STORAGE_KEYS.history,[]);renderHistory();});
 let speechRecognition=null;
 $("voiceBtn").addEventListener("click",()=>{
   const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;
@@ -676,6 +701,7 @@ $("voiceBtn").addEventListener("click",()=>{
 });
 loadReviews();loadPublicStats();setInterval(loadPublicStats,15000);recordQualifiedVisit();
 $("year").textContent=new Date().getFullYear();
+applyPreferences(readPreferences());
 showPage(location.hash.replace("#","")||"home");
 </script>
 </body>
