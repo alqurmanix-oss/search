@@ -55,7 +55,7 @@ h1 em{font-style:normal;color:var(--gold2);text-shadow:0 8px 38px rgba(216,181,1
 .topic-tabs{max-width:980px;justify-content:center;margin-top:24px}
 .topic-tabs button{border-radius:12px;padding:10px 15px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.025));white-space:nowrap}
 .home-feed{padding-top:22px;padding-bottom:70px}
-.feed-section{margin:24px auto 54px}
+.feed-section{margin:0 auto 24px}
 .feed-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
 .feed-title{font-size:clamp(21px,3vw,28px);margin:7px 0;color:#f5e7c9}
 .feed-subtitle{font-size:12px;color:#91a4b3;margin:0;line-height:1.8}
@@ -64,7 +64,7 @@ h1 em{font-style:normal;color:var(--gold2);text-shadow:0 8px 38px rgba(216,181,1
 .platform-wait-chip strong{color:#c5d1d9;font-weight:700}
 .platform-wait-chip span{color:#7f929f}
 .feed-count{flex:none;color:#d8b56d;border:1px solid rgba(216,181,109,.25);background:rgba(216,181,109,.06);border-radius:999px;padding:7px 11px;font-size:10px}
-.random-section{padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.random-section{padding-top:0;border-top:0}
 .feed-loading{text-align:center;padding:22px;color:var(--gold2);font-size:12px}
 .feed-sentinel{height:2px;width:100%}
 .feed-load-btn{display:block;margin:15px auto;padding:11px 24px;border:1px solid rgba(216,181,109,.35);border-radius:12px;background:rgba(216,181,109,.08);color:var(--gold2)}
@@ -218,18 +218,13 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
 
 <section class="wrap home-feed" id="homeFeed" data-page="home">
  <div class="feed-section">
-  <div class="feed-heading"><div><div class="section-kicker" style="text-align:right">LATEST FROM AQX SOURCES</div><h2 class="feed-title">أحدث المنشورات</h2><p class="feed-subtitle">أحدث مقال أو صفحة منشورة من كل منصة مسجلة في نبراس.</p></div><span class="feed-count" id="latestFeedCount">جارٍ التحديث</span></div>
   <div class="results-grid" id="latestFeedList"></div>
-  <div class="platform-waiting" id="latestPlatformsWaiting"></div>
-  <div class="empty" id="latestFeedEmpty" hidden>لا توجد منشورات عامة من المنصات حتى الآن. سيظهر أحدث محتوى تلقائيًا فور نشره وإتاحته في فهرس AQX.</div>
  </div>
  <div class="feed-section random-section">
-  <div class="feed-heading"><div><div class="section-kicker" style="text-align:right">DISCOVER MORE</div><h2 class="feed-title">اكتشف المزيد</h2><p class="feed-subtitle">محتوى متنوع بترتيب عشوائي، ويتجدد مع كل زيارة.</p></div><span class="feed-count">عرض متواصل</span></div>
   <div class="results-grid" id="randomFeedList"></div>
-  <div class="feed-loading" id="randomFeedLoading" hidden><span class="spinner"></span> جارٍ تحميل المزيد من المحتوى...</div>
+  <div class="feed-loading" id="randomFeedLoading" hidden><span class="spinner"></span></div>
   <div class="feed-sentinel" id="randomFeedSentinel" aria-hidden="true"></div>
-  <button class="feed-load-btn" id="randomFeedFallback" type="button" hidden>تحميل المزيد</button>
-  <div class="feed-ending" id="randomFeedEnd" hidden><span class="ending-mark">✧</span><strong>وصلت إلى آخر ما لدينا حاليًا</strong><p>استمتعت برحلتك في نبراس؟ عد لاحقًا لاكتشاف منشورات جديدة من منصات AQX.</p><span class="ending-line"></span><small>نهاية المحتوى المتاح · AQX NEBRAS</small></div>
+  <div class="feed-ending" id="randomFeedEnd" hidden><span class="ending-mark">✧</span><strong>وصلت إلى آخر ما لدينا حاليًا</strong><span class="ending-line"></span></div>
  </div>
 </section>
 
@@ -442,18 +437,8 @@ async function homeFeedRequest(payload){
 }
 function renderHomeLatest(items,waiting){
   const list=$("latestFeedList");list.replaceChildren();
-  const pending=$("latestPlatformsWaiting");pending.replaceChildren();
   homeFeedState.featuredIds=(items||[]).map(x=>x.link_id).filter(Boolean);
-  const total=Number(homeFeedState.platformsTotal||((items||[]).length+(waiting||[]).length));
-  $("latestFeedCount").textContent=(items||[]).length.toLocaleString("ar-EG")+" من "+total.toLocaleString("ar-EG")+" منصة";
-  $("latestFeedEmpty").hidden=!!(items||[]).length;
   (items||[]).forEach(item=>list.append(createResult(item)));
-  (waiting||[]).forEach(platform=>{
-    const chip=document.createElement("div");chip.className="platform-wait-chip";
-    const name=document.createElement("strong");name.textContent=safeText(platform.name,"منصة AQX");
-    const note=document.createElement("span");note.textContent="بانتظار أول منشور";
-    chip.append(name,note);pending.append(chip);
-  });
 }
 function finishRandomFeed(){
   $("randomFeedLoading").hidden=true;
@@ -482,28 +467,30 @@ async function loadRandomFeed(){
     else if(!added&&rows.length===0)finishRandomFeed();
     else if(homeFeedState.hasMore)setupRandomFeedObserver();
   }catch(error){
-    toast(error.message||"تعذر تحميل المزيد من المحتوى");
-    if(homeFeedState.observer)homeFeedState.observer.disconnect();
-    $("randomFeedFallback").hidden=false;
+    console.error("AQX random feed:",error);
+    setupRandomFeedObserver();
   }finally{
     homeFeedState.loadingRandom=false;$("randomFeedLoading").hidden=true;
   }
 }
 function setupRandomFeedObserver(){
   if(homeFeedState.observer)homeFeedState.observer.disconnect();
-  if(!("IntersectionObserver" in window)){
-    $("randomFeedFallback").hidden=false;return;
+  if("IntersectionObserver" in window){
+    homeFeedState.observer=new IntersectionObserver(entries=>{
+      if(entries.some(x=>x.isIntersecting))loadRandomFeed();
+    },{root:null,rootMargin:"900px 0px",threshold:0});
+    homeFeedState.observer.observe($("randomFeedSentinel"));
+    return;
   }
-  $("randomFeedFallback").hidden=true;
-  homeFeedState.observer=new IntersectionObserver(entries=>{
-    if(entries.some(x=>x.isIntersecting))loadRandomFeed();
-  },{root:null,rootMargin:"900px 0px",threshold:0});
-  homeFeedState.observer.observe($("randomFeedSentinel"));
+  const check=()=>{const el=$("randomFeedSentinel");if(el&&!homeFeedState.loadingRandom&&homeFeedState.hasMore&&el.getBoundingClientRect().top<window.innerHeight+900)loadRandomFeed();};
+  window.addEventListener("scroll",check,{passive:true});
+  window.addEventListener("resize",check);
+  check();
 }
 async function loadHomeFeed(){
   if(homeFeedState.loaded||homeFeedState.loadingLatest)return;
   homeFeedState.loadingLatest=true;
-  $("latestFeedCount").textContent="جارٍ التحديث";
+  /* لا نعرض عدادات أو عناوين بين الاقتراحات والمحتوى */
   try{
     const data=await homeFeedRequest({mode:"latest"});
     homeFeedState.platformsTotal=Number(data.platforms_total||0);
@@ -513,13 +500,10 @@ async function loadHomeFeed(){
     homeFeedState.loaded=true;setupRandomFeedObserver();
     await loadRandomFeed();
   }catch(error){
-    $("latestFeedCount").textContent="تعذر التحديث";
-    $("latestFeedEmpty").hidden=false;
-    $("latestFeedEmpty").textContent=error.message||"تعذر تحميل أحدث المنشورات.";
-    toast("تعذر تحديث عرض الصفحة الرئيسية حاليًا.");
+    console.error("AQX home feed:",error);
   }finally{homeFeedState.loadingLatest=false;}
 }
-$("randomFeedFallback").addEventListener("click",loadRandomFeed);
+
 
 function renderSuggestions(list){
   const box=$("suggestions");box.replaceChildren();
