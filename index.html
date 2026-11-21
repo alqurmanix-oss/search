@@ -151,6 +151,42 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
 @media(min-width:901px){.menu{display:block}}
 .query-analytics{margin-top:24px}.query-analytics h3{font-size:16px;color:var(--gold2)}.query-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.query-columns>div{border:1px solid rgba(216,181,109,.14);border-radius:13px;padding:12px;background:rgba(255,255,255,.02)}.query-columns h4{font-size:11px;color:#d9c38f;margin:0 0 8px}.query-columns ol{margin:0;padding:0 20px 0 0;color:#b8c5ce;font-size:11px;line-height:2}.query-columns li{overflow-wrap:anywhere}.external-ad-frame{display:block;width:100%;min-height:100px;border:0;border-radius:12px;background:rgba(255,255,255,.02);margin:10px 0}.external-ad-wrap{width:100%;max-width:100%;overflow:hidden;margin:12px auto}.home-feed-ad{grid-column:1/-1;display:flex;justify-content:center;align-items:center;min-width:0;width:100%;padding:4px 0}.home-feed-ad .external-ad-wrap{margin:0 auto;}.external-ad-wrap[data-size="728x90"]{max-width:728px;min-height:90px}.external-ad-wrap[data-size="300x250"]{max-width:300px;min-height:250px}.external-ad-wrap[data-size="320x50"]{max-width:320px;min-height:60px}@media(max-width:760px){.query-columns{grid-template-columns:1fr 1fr}}
 
+
+/* AQX light identity: white surfaces, violet primary, sky accents */
+:root{--bg:#f7f5fb;--bg2:#fff;--panel:#fff;--panel2:#f5f1fb;--gold:#7046c5;--gold2:#8a63d2;--ink:#261c36;--muted:#6d6479;--line:rgba(112,70,197,.2);--white:#fff;--danger:#b42318;--ok:#16804a;--shadow:0 18px 55px rgba(55,35,88,.12)}
+body{background:radial-gradient(ellipse at 50% -18%,rgba(112,70,197,.09),transparent 42%),linear-gradient(180deg,#fff 0%,#f8f6fc 55%,#f5f2fa 100%);color:#261c36}
+header{background:rgba(255,255,255,.9);border-bottom:1px solid rgba(112,70,197,.12)}
+.brandname{color:#33204f}.brandtag,.navlinks,.searchmeta,.quick{color:#6d6479}
+.lead{color:#625a70}.eyebrow{background:rgba(112,70,197,.06)}
+.search-shell{background:linear-gradient(120deg,rgba(112,70,197,.12),rgba(125,190,230,.08));box-shadow:0 18px 55px rgba(55,35,88,.1),0 0 0 7px rgba(112,70,197,.025)}
+.searchbox{background:#fff;box-shadow:0 3px 14px rgba(35,20,58,.06)}.searchbox input{color:#261c36}
+.quick button,.directory-chip{background:#fff;border:1px solid rgba(112,70,197,.16);color:#514365}
+.quick button:hover,.directory-chip:hover,.directory-chip.active{border-color:#7046c5;color:#5a35a4;background:#f2ecfb}
+.directory-filters{max-width:980px;margin:20px auto 0;display:grid;gap:12px;text-align:right}
+.directory-filter-row{display:grid;grid-template-columns:75px minmax(0,1fr);align-items:start;gap:10px;color:#6e647b;font-size:11px}
+.directory-chips{display:flex;gap:7px;flex-wrap:wrap}
+.directory-chip{border-radius:999px;padding:8px 12px;font-size:11px;cursor:pointer}
+.result{background:#fff;border-color:rgba(112,70,197,.13);box-shadow:0 7px 24px rgba(40,25,65,.045)}
+.result:hover{border-color:rgba(112,70,197,.38);box-shadow:0 12px 28px rgba(40,25,65,.08)}
+.result-title{color:#4f2d83}.result-desc{color:#625a70}.result-meta{color:#71677d}
+.thumb,.thumb-placeholder{background:#f0eafa}
+.sidebar{background:linear-gradient(180deg,#fff,#f7f4fb);border-left-color:rgba(112,70,197,.16);box-shadow:-16px 0 45px rgba(45,25,75,.09)}
+.side-brand{border-bottom-color:rgba(112,70,197,.12)}
+.side-brand b,.side-link{color:#44345c}.side-link:hover,.side-link.active{background:#f0eafb;border-color:rgba(112,70,197,.18);color:#4d2a83}
+.side-note,.panel-card,.feature,.stat-box,.review-item{background:#fff;color:#625a70;border-color:rgba(112,70,197,.14)}
+.panel-title,.feed-title,.section-title,.feature h3{color:#35224f}
+.panel-muted,.feature p,.feed-subtitle,.fineprint{color:#6e647b}
+.searchbtn,.primary-btn{background:linear-gradient(135deg,#8a63d2,#6741b4);color:#fff;box-shadow:0 5px 16px rgba(112,70,197,.18)}
+.navcta,.ad-action,.save-result,.clear-btn{color:#5b369a;border-color:rgba(112,70,197,.3)}
+.ad-card{background:#fff;border-color:rgba(112,70,197,.2);box-shadow:0 8px 24px rgba(45,25,75,.06)}
+.ad-title{color:#35224f}.ad-sub{color:#6e647b}
+.result-actions .save-result{background:#f6f2fc}
+.toast{background:#fff;color:#35224f;border-color:rgba(112,70,197,.2)}
+.pill{border-color:rgba(112,70,197,.16)}
+.pill.warn{color:#855b13;border-color:rgba(190,139,43,.25)}
+.pill.good{color:#16794a;border-color:rgba(22,121,74,.2)}
+@media(max-width:760px){.directory-filter-row{grid-template-columns:1fr}.directory-chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:5px}.directory-chip{flex:none}}
+
 </style>
 </head>
 <body>
@@ -160,19 +196,13 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
  <div class="side-brand"><span class="brandmark" style="width:38px;height:38px;border-radius:12px">◇</span><span><b>نبراس AQX</b><small>مركز البحث والثقة</small></span></div>
  <a class="side-link active" href="#home" data-page-target="home"><span>⌂</span>الرئيسية</a>
  <a class="side-link" href="#search" data-page-target="search"><span>⌕</span>البحث</a>
- <a class="side-link" href="#live-search" data-page-target="live-search"><span>◉</span>ما يبحث عنه الآخرون الآن</a>
- <a class="side-link" href="#popular-searches" data-page-target="popular-searches"><span>↗</span>الأكثر بحثًا</a>
  <a class="side-link" href="#bookmarks" data-page-target="bookmarks"><span>☆</span>المحفوظات</a>
  <a class="side-link" href="#history" data-page-target="history"><span>◷</span>سجل البحث الكامل</a>
- <a class="side-link" href="#rating" data-page-target="rating"><span>★</span>تقييم المحرك</a>
- <a class="side-link" href="#reviews" data-page-target="reviews"><span>✎</span>المراجعات</a>
- <a class="side-link" href="#statistics" data-page-target="statistics"><span>▥</span>الإحصائيات</a>
- <a class="side-link" href="#ad-info" data-page-target="ad-info"><span>▣</span>الإعلانات</a>
  <a class="side-link" href="#about" data-page-target="about"><span>ⓘ</span>عن المحرك</a>
  <a class="side-link" href="#report" data-page-target="report"><span>⚑</span>الإبلاغ عن مشكلة</a>
  <a class="side-link" href="#settings" data-page-target="settings"><span>⚙</span>الإعدادات</a>
 <button class="side-link install-app-link" id="installAppBtn" type="button"><span>▣</span>إضافة إلى سطح المكتب</button>
- <div class="side-note"><b>حماية AQX</b><br>تُستبعد الطلبات الآلية والأحداث المشبوهة من العدّ والإحصائيات، وتخضع مراجعات الزوار للاعتماد قبل النشر.</div>
+ <div class="side-note"><b>دليل AQX الموحد</b><br>كل الروابط المفهرسة متاحة للبحث، وتظهر شروط الوصول بوضوح دون تدخل في محتوى الوجهة.</div>
 </aside>
 <header>
  <div class="wrap nav">
@@ -207,6 +237,10 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
   <button type="button" data-q="الثقافة">الثقافة</button><button type="button" data-q="الرياضة">الرياضة</button>
   <button type="button" data-q="البرمجة">البرمجة</button><button type="button" data-q="ريادة الأعمال">ريادة الأعمال</button>
  </div>
+  <div class="directory-filters" aria-label="تصفية دليل الروابط">
+   <div class="directory-filter-row"><span>التبويبات</span><div id="searchTabs" class="directory-chips"></div></div>
+   <div class="directory-filter-row"><span>الأقسام</span><div id="searchSections" class="directory-chips"></div></div>
+  </div>
  </div>
 </section>
 
@@ -226,6 +260,7 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
 <section class="wrap home-feed" id="homeFeed" data-page="home">
  <div class="feed-section">
   <div class="results-grid" id="latestFeedList"></div>
+  <button class="feed-load-btn hidden" id="homeFeedMore" type="button">عرض المزيد من الروابط</button>
  </div>
  <div class="feed-section random-section">
   <div class="results-grid" id="randomFeedList"></div>
@@ -286,26 +321,21 @@ html.aqx-reduced-motion *,html.aqx-reduced-motion *:before,html.aqx-reduced-moti
 /* AQX NEBRAS FRONTEND CONFIG
    The publishable key is intended for browser use. Never place a service_role key here. */
 const AQX_CONFIG = Object.freeze({
-  endpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-search",
-  eventEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-network-event-gateway",
-  redirectEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-go",
-  reviewFeedEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-review-feed",
-  reviewSubmitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-submit-review",
-  statsEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-public-stats",
-  homeFeedEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-home-feed",
-  visitEndpoint: "https://kkmvixuztywgqjbwxyvk.supabase.co/functions/v1/aqx-nebras-pageview",
-  linkSlug: "nebras-aqx-search",
-  publishableKey: "sb_publishable_qFdDHua0CEsCD-h63wtv-g_3LTHVrMC",
-  propertyKey: "aqx-main",
+  supabaseUrl: "https://vuszqzgldbsscuxdfhdz.supabase.co",
+  publishableKey: "sb_publishable_cI7C0sL9M4OLvsa-JGAAFQ_KfqlkI7X",
   resultsPerPage: 20,
   requestTimeoutMs: 18000
 });
 
 const $ = (id) => document.getElementById(id);
-const state = {query:"",offset:0,loading:false,hasMore:false,requestId:0,lastData:null};
+const state = {query:"",offset:0,loading:false,hasMore:false,requestId:0,lastData:null,tab:"all",sectionId:null};
 const safeText = (v, fallback="") => typeof v === "string" ? v : fallback;
 const safeHttps = (value) => {
   try { const u = new URL(value); return u.protocol === "https:" ? u.href : null; }
+  catch { return null; }
+};
+const safeWebUrl = (value) => {
+  try { const u = new URL(value); return ["https:","http:"].includes(u.protocol) && !u.username && !u.password ? u.href : null; }
   catch { return null; }
 };
 function toast(message){
@@ -316,18 +346,36 @@ function deviceType(){
   const w=window.innerWidth;
   if(w<600)return "mobile";if(w<1024)return "tablet";return "desktop";
 }
+async function aqxRpc(name,payload,signal){
+  const response=await fetch(AQX_CONFIG.supabaseUrl+"/rest/v1/rpc/"+name,{
+    method:"POST",mode:"cors",signal,
+    headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey,"Authorization":"Bearer "+AQX_CONFIG.publishableKey},
+    body:JSON.stringify(payload),cache:"no-store"
+  });
+  const data=await response.json().catch(()=>null);
+  if(!response.ok)throw new Error(data?.message||data?.hint||data?.error||"تعذر الاتصال بمحرك AQX");
+  return data;
+}
 async function apiSearch(query,offset){
   const controller=new AbortController();
   const timer=setTimeout(()=>controller.abort(),AQX_CONFIG.requestTimeoutMs);
   try{
-    const response=await fetch(AQX_CONFIG.endpoint,{
-      method:"POST",mode:"cors",signal:controller.signal,
-      headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},
-      body:JSON.stringify({query,limit:AQX_CONFIG.resultsPerPage,offset,property_key:AQX_CONFIG.propertyKey,device_type:deviceType()})
-    });
-    const data=await response.json();
-    if(!response.ok||data.ok===false)throw new Error(data.error||"تعذر الاتصال بمحرك البحث");
-    return data;
+    const rows=await aqxRpc("aqx_search_catalog",{
+      p_query:String(query||""),
+      p_tab:state.tab||"all",
+      p_section_id:state.sectionId||null,
+      p_limit:AQX_CONFIG.resultsPerPage,
+      p_offset:offset
+    },controller.signal);
+    return {results:(Array.isArray(rows)?rows:[]).map(row=>({
+      id:row.document_id,title:row.title,description:row.summary,
+      thumbnail_url:row.image_url,destination_url:row.canonical_url,
+      platform_name:row.entity_type==="link"?"رابط من دليل AQX":"مورد من AQX",
+      content_type:row.link_type_code||row.entity_type,
+      requires_auth:row.requires_auth===true,requires_payment:row.requires_payment===true,
+      access_mode:row.access_mode||"public",visits_count:Number(row.visits_count||0),
+      published_at:row.published_at
+    })),suggestions:[]};
   }finally{clearTimeout(timer);}
 }
 function createAdCard(ad){
@@ -407,21 +455,8 @@ function renderExternalAds(data){
     const frame=renderExternalTag(tag);if(frame){target.append(frame);activateExternalTag(frame);}
   });
 }
-function renderAds(data){
-  const slots={top:$("adTop"),inline:$("adInline"),bottom:$("adBottom")};
-  Object.values(slots).forEach(el=>el.replaceChildren());
-  const ads=data.ads||{};
-  (Array.isArray(ads.top)?ads.top:[]).forEach(ad=>slots.top.append(createAdCard(ad)));
-  (Array.isArray(ads.bottom)?ads.bottom:[]).forEach(ad=>slots.bottom.append(createAdCard(ad)));
-  const inlineAds=Array.isArray(ads.inline)?ads.inline:[];
-  if(inlineAds.length){
-    const inlineWrap=document.createElement("div");inlineWrap.className="ad-slot";
-    inlineAds.forEach(ad=>inlineWrap.append(createAdCard(ad)));
-    const results=$("resultsList");
-    const anchor=results.children[Math.min(4,Math.max(0,results.children.length-1))];
-    if(anchor&&results.children.length>1)anchor.after(inlineWrap);else results.append(inlineWrap);
-  }
-  renderExternalAds(data);
+function renderAds(){
+  ["adTop","adInline","adBottom"].forEach(id=>{const el=$(id);if(el)el.replaceChildren();});
 }
 function sendAdEvent(ad,eventType){
   if(ad.source_kind==="aqx_fallback"||!ad.request_id||!ad.ad_id)return;
@@ -432,125 +467,76 @@ function sendAdEvent(ad,eventType){
 }
 function createResult(item){
   const article=document.createElement("article");article.className="result";
-  const imageUrl=safeHttps(item.thumbnail_url);
-  if(imageUrl){
-    const img=document.createElement("img");img.className="thumb";img.src=imageUrl;img.alt="";img.loading="lazy";img.referrerPolicy="no-referrer";article.append(img);
-  }else{
-    const thumb=document.createElement("div");thumb.className="thumb thumb-placeholder";thumb.textContent="◇";article.append(thumb);
-  }
+  const imageUrl=safeWebUrl(item.thumbnail_url);
+  if(imageUrl){const img=document.createElement("img");img.className="thumb";img.src=imageUrl;img.alt="";img.loading="lazy";img.referrerPolicy="no-referrer";article.append(img);}
+  else{const thumb=document.createElement("div");thumb.className="thumb thumb-placeholder";thumb.textContent="◇";article.append(thumb);}
   const main=document.createElement("div");main.className="result-main";
   const title=document.createElement("a");title.className="result-title";title.textContent=safeText(item.title,"نتيجة بدون عنوان");
-  const slug=safeText(item.slug,"");
-  if(slug){title.href=AQX_CONFIG.redirectEndpoint+"?slug="+encodeURIComponent(slug);title.target=readPreferences().newTab?"_blank":"_self";title.rel="noopener noreferrer";}
-  else{const dest=safeHttps(item.destination_url);if(dest){title.href=dest;title.target=readPreferences().newTab?"_blank":"_self";title.rel="noopener noreferrer";}}
+  const dest=safeWebUrl(item.destination_url);
+  if(dest){title.href=dest;title.target=readPreferences().newTab?"_blank":"_self";title.rel="noopener noreferrer";}
+  else{title.setAttribute("aria-disabled","true");}
   const desc=document.createElement("p");desc.className="result-desc";desc.textContent=safeText(item.description,"لا يتوفر وصف لهذه النتيجة.");
   const meta=document.createElement("div");meta.className="result-meta";
-  const add=(text,cls="pill")=>{if(text){const s=document.createElement("span");s.className=cls;s.textContent=text;meta.append(s);}};
-  add(safeText(item.platform_name,"مصدر ضمن AQX"));
-  add(safeText(item.content_type,"محتوى"));
-  if(item.link_health_status==="valid")add("الرابط متاح","pill good");
-  else if(item.link_health_status==="broken")add("يحتاج مراجعة","pill warn");
+  const add=(text,cls="pill")=>{if(text){const span=document.createElement("span");span.className=cls;span.textContent=text;meta.append(span);}};
+  add(safeText(item.platform_name,"مصدر ضمن AQX"));add(safeText(item.content_type,"محتوى"));
+  if(item.requires_auth)add("يتطلب تسجيل الدخول","pill warn");
+  if(item.requires_payment)add("يتطلب الدفع","pill warn");
+  if(item.access_mode==="restricted"&&!item.requires_auth)add("وصول مقيّد","pill warn");
+  if(Number(item.visits_count)>0)add(Number(item.visits_count).toLocaleString("ar-EG")+" زيارة");
   const actions=document.createElement("div");actions.className="result-actions";
   const save=document.createElement("button");save.type="button";save.className="save-result";save.textContent=isSavedItem(item)?"★ محفوظ":"☆ حفظ";
   save.addEventListener("click",()=>toggleSavedItem(item,save));actions.append(save);
   main.append(title,desc,meta,actions);article.append(main);return article;
 }
-const homeFeedState={loaded:false,loadingLatest:false,loadingRandom:false,offset:0,hasMore:true,seed:"",featuredIds:[],seenIds:new Set(),observer:null,externalTags:[],feedCardsRendered:0,externalTagIndex:0};
-async function homeFeedRequest(payload){
-  const response=await fetch(AQX_CONFIG.homeFeedEndpoint,{method:"POST",mode:"cors",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify(payload)});
-  const data=await response.json();
-  if(!response.ok||!data.ok)throw new Error(data.error||"تعذر تحميل محتوى الصفحة الرئيسية");
-  return data;
-}
-function appendHomeFeedItem(item,list){
-  list.append(createResult(item));
-  homeFeedState.feedCardsRendered++;
-  const interval=8;
-  const firstPlacement=homeFeedState.feedCardsRendered===1;
-  const regularPlacement=(homeFeedState.feedCardsRendered-1)%interval===0;
-  if((firstPlacement||regularPlacement)&&homeFeedState.externalTags.length&&location.hostname==="search.alqurmanix.com"){
-    const tag=homeFeedState.externalTags[homeFeedState.externalTagIndex%homeFeedState.externalTags.length];
-    homeFeedState.externalTagIndex++;
-    const ad=renderExternalTag(tag);
-    if(ad){ad.classList.add("home-feed-ad");ad.setAttribute("aria-label","إعلان");list.append(ad);activateExternalTag(ad);}
-  }
-}
-function renderHomeLatest(items,waiting){
-  const list=$("latestFeedList");list.replaceChildren();
-  homeFeedState.featuredIds=(items||[]).map(x=>x.link_id).filter(Boolean);
-  (items||[]).forEach(item=>appendHomeFeedItem(item,list));
-  if(!(items||[]).length&&homeFeedState.externalTags.length&&location.hostname==="search.alqurmanix.com"){
-    const tag=homeFeedState.externalTags[0];
-    const ad=renderExternalTag(tag);
-    if(ad){ad.classList.add("home-feed-ad");ad.setAttribute("aria-label","إعلان");list.append(ad);activateExternalTag(ad);homeFeedState.externalTagIndex=1;}
-  }
-}
-function finishRandomFeed(){
-  $("randomFeedLoading").hidden=true;
-  $("randomFeedEnd").hidden=false;
-  $("randomFeedSentinel").hidden=true;
-  homeFeedState.hasMore=false;
-}
-async function loadRandomFeed(){
-  if(homeFeedState.loadingRandom||!homeFeedState.hasMore)return;
-  homeFeedState.loadingRandom=true;$("randomFeedLoading").hidden=false;
-  $("randomFeedEnd").hidden=true;
+const homeFeedState={loaded:false,loading:false,offset:0,hasMore:false};
+async function loadHomeFeed(force=false,append=false){
+  if(homeFeedState.loading||(!force&&homeFeedState.loaded&&!append))return;
+  homeFeedState.loading=true;
+  const list=$("latestFeedList"),more=$("homeFeedMore");
+  if(!append){homeFeedState.offset=0;list.replaceChildren();}
   try{
-    const data=await homeFeedRequest({mode:"random",seed:homeFeedState.seed,limit:24,offset:homeFeedState.offset,exclude_ids:homeFeedState.featuredIds});
-    const rows=Array.isArray(data.items)?data.items:[];
-    homeFeedState.offset+=rows.length;
-    const list=$("randomFeedList");let added=0;
-    rows.forEach(item=>{
-      const id=item.link_id||item.slug||item.destination_url;
-      if(id&&homeFeedState.seenIds.has(id))return;
-      if(id)homeFeedState.seenIds.add(id);
-      appendHomeFeedItem(item,list);added++;
-    });
-    homeFeedState.hasMore=!!data.has_more;
-    if(!homeFeedState.hasMore)finishRandomFeed();
-    else if(!added&&rows.length===0)finishRandomFeed();
-    else if(homeFeedState.hasMore)setupRandomFeedObserver();
+    const data=await apiSearch("",homeFeedState.offset);
+    data.results.forEach(item=>list.append(createResult(item)));
+    homeFeedState.offset+=data.results.length;
+    homeFeedState.hasMore=data.results.length===AQX_CONFIG.resultsPerPage;
+    homeFeedState.loaded=true;
+    if(more)more.classList.toggle("hidden",!homeFeedState.hasMore);
+    const random=$("randomFeedList");if(random){random.replaceChildren();random.hidden=true;}
   }catch(error){
-    console.error("AQX random feed:",error);
-    setupRandomFeedObserver();
-  }finally{
-    homeFeedState.loadingRandom=false;$("randomFeedLoading").hidden=true;
-  }
+    console.error("AQX home browse:",error);
+    if(!append){const empty=document.createElement("div");empty.className="empty";empty.textContent="تعذر تحميل روابط AQX الآن. حاول مرة أخرى.";list.append(empty);}
+  }finally{homeFeedState.loading=false;}
 }
-function setupRandomFeedObserver(){
-  if(homeFeedState.observer)homeFeedState.observer.disconnect();
-  if("IntersectionObserver" in window){
-    homeFeedState.observer=new IntersectionObserver(entries=>{
-      if(entries.some(x=>x.isIntersecting))loadRandomFeed();
-    },{root:null,rootMargin:"900px 0px",threshold:0});
-    homeFeedState.observer.observe($("randomFeedSentinel"));
-    return;
-  }
-  const check=()=>{const el=$("randomFeedSentinel");if(el&&!homeFeedState.loadingRandom&&homeFeedState.hasMore&&el.getBoundingClientRect().top<window.innerHeight+900)loadRandomFeed();};
-  window.addEventListener("scroll",check,{passive:true});
-  window.addEventListener("resize",check);
-  check();
-}
-async function loadHomeFeed(){
-  if(homeFeedState.loaded||homeFeedState.loadingLatest)return;
-  homeFeedState.loadingLatest=true;
-  /* لا نعرض عدادات أو عناوين بين الاقتراحات والمحتوى */
+async function loadDirectoryNavigation(){
   try{
-    const data=await homeFeedRequest({mode:"latest"});
-    homeFeedState.platformsTotal=Number(data.platforms_total||0);
-    homeFeedState.externalTags=Array.isArray(data.external_tags)?data.external_tags:[];
-    homeFeedState.feedCardsRendered=0;homeFeedState.externalTagIndex=0;
-    renderHomeLatest(Array.isArray(data.items)?data.items:[],Array.isArray(data.platforms_waiting)?data.platforms_waiting:[]);
-    homeFeedState.seed=(window.crypto?.getRandomValues?Array.from(window.crypto.getRandomValues(new Uint32Array(4))).join("-"):String(Date.now()))+"-"+Math.random().toString(36).slice(2);
-    homeFeedState.offset=0;homeFeedState.hasMore=true;homeFeedState.seenIds=new Set();
-    homeFeedState.loaded=true;setupRandomFeedObserver();
-    await loadRandomFeed();
-  }catch(error){
-    console.error("AQX home feed:",error);
-  }finally{homeFeedState.loadingLatest=false;}
+    const [tabs,sections]=await Promise.all([
+      aqxRpc("aqx_search_tabs",{}),aqxRpc("aqx_search_sections",{p_platform_id:null})
+    ]);
+    const tabBox=$("searchTabs"),sectionBox=$("searchSections");
+    if(tabBox){
+      tabBox.replaceChildren();
+      (Array.isArray(tabs)?tabs:[]).forEach(tab=>{
+        const button=document.createElement("button");button.type="button";button.className="directory-chip";
+        button.textContent=safeText(tab.label_ar,tab.code);button.dataset.tabCode=tab.code;
+        button.classList.toggle("active",tab.code===state.tab);tabBox.append(button);
+      });
+    }
+    if(sectionBox){
+      sectionBox.replaceChildren();
+      const all=document.createElement("button");all.type="button";all.className="directory-chip active";
+      all.textContent="كل الأقسام";all.dataset.sectionId="";sectionBox.append(all);
+      (Array.isArray(sections)?sections.filter(x=>!x.parent_id):[]).forEach(section=>{
+        const button=document.createElement("button");button.type="button";button.className="directory-chip";
+        button.textContent=safeText(section.name,"قسم");button.dataset.sectionId=section.id;sectionBox.append(button);
+      });
+    }
+  }catch(error){console.warn("AQX search navigation:",error);}
 }
-
-
+function refreshDirectoryView(){
+  homeFeedState.loaded=false;homeFeedState.offset=0;
+  if(state.query){state.loading=false;runSearch(state.query,true);}
+  else loadHomeFeed(true,false);
+}
 function renderSuggestions(list){
   const box=$("suggestions");box.replaceChildren();
   if(!Array.isArray(list)||!list.length){box.classList.add("hidden");return;}
@@ -609,12 +595,25 @@ async function runSearch(query,replace=true){
 $("searchForm").addEventListener("submit",e=>{e.preventDefault();runSearch($("searchInput").value,true);});
 $("quickSearch").addEventListener("click",e=>{const b=e.target.closest("button[data-q]");if(!b)return;$("searchInput").value=b.dataset.q;runSearch(b.dataset.q,true);});
 $("moreBtn").addEventListener("click",()=>{if(state.hasMore)runSearch(state.query,false);});
+$("homeFeedMore")?.addEventListener("click",()=>loadHomeFeed(true,true));
+$("searchTabs")?.addEventListener("click",e=>{
+  const button=e.target.closest("button[data-tab-code]");if(!button)return;
+  state.tab=button.dataset.tabCode||"all";
+  $("searchTabs").querySelectorAll("button").forEach(x=>x.classList.toggle("active",x===button));
+  refreshDirectoryView();
+});
+$("searchSections")?.addEventListener("click",e=>{
+  const button=e.target.closest("button[data-section-id]");if(!button)return;
+  state.sectionId=button.dataset.sectionId||null;
+  $("searchSections").querySelectorAll("button").forEach(x=>x.classList.toggle("active",x===button));
+  refreshDirectoryView();
+});
 function closeSidebar(){$("sidebar").classList.remove("open");$("drawerShade").classList.remove("open");$("sidebar").setAttribute("aria-hidden","true");$("menuBtn").setAttribute("aria-expanded","false");}
 function openSidebar(){$("sidebar").classList.add("open");$("drawerShade").classList.add("open");$("sidebar").setAttribute("aria-hidden","false");$("menuBtn").setAttribute("aria-expanded","true");}
 $("menuBtn").addEventListener("click",()=>{$("sidebar").classList.contains("open")?closeSidebar():openSidebar();});
 $("drawerShade").addEventListener("click",closeSidebar);
 function showPage(page){
-  const valid=["home","search","live-search","popular-searches","bookmarks","history","rating","reviews","statistics","ad-info","about","report","settings"];
+  const valid=["home","search","bookmarks","history","about","report","settings"];
   if(!valid.includes(page))page="home";
   document.querySelectorAll("[data-page]").forEach(el=>{
     const pages=(el.dataset.page||"").split(",").map(x=>x.trim());
@@ -626,7 +625,6 @@ function showPage(page){
   if(page==="bookmarks")renderBookmarks();
   if(page==="history")renderHistory();
   if(page==="settings")loadPreferences();
-  if(page==="live-search"||page==="popular-searches")loadPublicStats();
   if(page==="home")loadHomeFeed();
   closeSidebar();
   window.scrollTo({top:0,behavior:"smooth"});
@@ -636,37 +634,6 @@ $("sidebar").addEventListener("click",e=>{const a=e.target.closest("a[data-page-
 $("brandLink")?.addEventListener("click",e=>{e.preventDefault();showPage("home");});
 window.addEventListener("hashchange",()=>{const page=location.hash.replace("#","");if(page)showPage(page);});
 
-let selectedRating=0;
-$("ratingPick").addEventListener("click",e=>{const b=e.target.closest("button[data-rating]");if(!b)return;selectedRating=Number(b.dataset.rating);$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",Number(x.dataset.rating)<=selectedRating));});
-async function loadReviews(){try{const u=AQX_CONFIG.reviewFeedEndpoint+"?slug="+encodeURIComponent(AQX_CONFIG.linkSlug);const r=await fetch(u,{headers:{"apikey":AQX_CONFIG.publishableKey}});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر تحميل التقييمات");const p=d.profile||{};const avg=Number(p.average_rating||0),count=Number(p.approved_reviews||0);$("ratingAverage").textContent=count?avg.toFixed(2):"—";$("ratingStars").textContent="★".repeat(Math.round(avg))+"☆".repeat(5-Math.round(avg));$("ratingCount").textContent=count+" مراجعة معتمدة";const list=$("reviewList");list.replaceChildren();(d.reviews||[]).forEach(x=>{const card=document.createElement("article");card.className="review-item";const h=document.createElement("h4");h.textContent=(x.review_title||"مراجعة زائر")+" · "+"★".repeat(Number(x.rating||0));const p=document.createElement("p");p.textContent=x.review_text||"";const m=document.createElement("div");m.className="review-meta";m.textContent=(x.reviewer_name||"زائر AQX")+" · "+new Date(x.created_at).toLocaleDateString("ar-EG");card.append(h,p,m);if(x.author_reply){const reply=document.createElement("p");reply.textContent="رد AQX: "+x.author_reply;card.append(reply);}list.append(card);});if(!list.children.length){const e=document.createElement("div");e.className="review-meta";e.textContent="لا توجد مراجعات معتمدة حتى الآن. كن أول من يشارك رأيه.";list.append(e);}}catch(e){$("ratingCount").textContent="تعذر تحميل التقييمات الآن";$("reviewList").textContent="تعذر تحميل المراجعات. حاول لاحقًا.";}}
-$("reviewForm").addEventListener("submit",async e=>{e.preventDefault();const msg=$("reviewMessage");if(!selectedRating){msg.textContent="اختر عدد النجوم أولاً.";return;}const btn=$("reviewSubmit");btn.disabled=true;msg.textContent="جارٍ إرسال المراجعة...";try{const r=await fetch(AQX_CONFIG.reviewSubmitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,rating:selectedRating,reviewer_name:$("reviewName").value.trim(),review_title:$("reviewTitle").value.trim(),review_text:$("reviewText").value.trim(),website:$("reviewWebsite").value})});const d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"تعذر إرسال المراجعة");msg.textContent=d.message||"تم استلام مراجعتك وستُراجع قبل النشر.";$("reviewForm").reset();selectedRating=0;$("ratingPick").querySelectorAll("button").forEach(x=>x.classList.remove("selected"));}catch(err){msg.textContent=err.message||"تعذر الإرسال الآن.";}finally{btn.disabled=false;}});
-function renderSearchTermList(id,rows,live=false){
-  const list=$(id);if(!list)return;list.replaceChildren();
-  if(!Array.isArray(rows)||!rows.length){const li=document.createElement("li");li.textContent="لا توجد بيانات مسجلة";list.append(li);return;}
-  rows.slice(0,8).forEach(row=>{const li=document.createElement("li");const q=safeText(row.query||row.search||row.query_text,"عبارة غير متاحة");li.textContent=q+(live&&row.last_searched_at?" · "+new Date(row.last_searched_at).toLocaleTimeString("ar-EG"):"");list.append(li);});
-}
-async function loadPublicStats(){
-  try{
-    const r=await fetch(AQX_CONFIG.statsEndpoint,{headers:{"apikey":AQX_CONFIG.publishableKey},cache:"no-store"});
-    const d=await r.json();if(!r.ok||!d.ok)throw Error("stats");
-    $("statVisits").textContent=Number(d.visits||0).toLocaleString("ar-EG");
-    $("statSearches").textContent=d.searches==null?"—":Number(d.searches).toLocaleString("ar-EG");
-    $("statAdImpressions").textContent=Number(d.ad_impressions||0).toLocaleString("ar-EG");
-    $("statAdClicks").textContent=Number(d.ad_clicks||0).toLocaleString("ar-EG");
-    const terms=d.top_searches||{};
-    renderSearchTermList("liveSearchTermsPage",terms.live,true);
-    renderSearchTermList("topSearchTodayPage",terms.today);
-    renderSearchTermList("topSearchWeekPage",terms.week);
-    renderSearchTermList("topSearchMonthPage",terms.month);
-    renderSearchTermList("topSearchYearPage",terms.year);
-    const updated="آخر تحديث: "+new Date(d.updated_at||Date.now()).toLocaleString("ar-EG");
-    $("statsUpdated").textContent=updated;
-    $("liveSearchUpdated").textContent=updated;
-    $("popularSearchUpdated").textContent=updated;
-  }catch{$("statsUpdated").textContent="تعذر تحميل الإحصائيات وعبارات البحث حاليًا؛ ستظهر عند استجابة واجهة التقارير.";}}
-
-function isLikelyAutomated(){const ua=navigator.userAgent||"";return /bot|crawler|spider|headless|phantom|selenium|playwright|puppeteer|lighthouse|pagespeed|curl|wget|python-requests/i.test(ua)||navigator.webdriver===true;}
-function recordQualifiedVisit(){if(isLikelyAutomated()||!window.fetch||!window.crypto?.getRandomValues)return;const started=performance.now(),nonce=crypto.getRandomValues(new Uint32Array(4)).join("-");let sent=false;const send=()=>{if(sent||performance.now()-started<2500||document.visibilityState!=="visible")return;sent=true;fetch(AQX_CONFIG.visitEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:JSON.stringify({slug:AQX_CONFIG.linkSlug,nonce,elapsed_ms:Math.round(performance.now()-started)}),keepalive:true}).catch(()=>{});};document.addEventListener("visibilitychange",send);window.addEventListener("pagehide",send,{once:true});setTimeout(send,3000);}
 const STORAGE_KEYS={history:"aqx_nebras_search_history_v1",bookmarks:"aqx_nebras_bookmarks_v1",preferences:"aqx_nebras_preferences_v1"};
 const DEFAULT_PREFERENCES={reduceMotion:false,newTab:true,confirmClear:true};
 function readPreferences(){try{return {...DEFAULT_PREFERENCES,...JSON.parse(localStorage.getItem(STORAGE_KEYS.preferences)||"{}")};}catch(_){return {...DEFAULT_PREFERENCES};}}
@@ -682,11 +649,7 @@ function recordSearchHistory(query){
   const rows=readLocal(STORAGE_KEYS.history);rows.unshift({query,created_at:new Date().toISOString()});
   writeLocal(STORAGE_KEYS.history,rows);
 }
-function itemUrl(item){
-  const slug=safeText(item.slug,"");
-  if(slug)return AQX_CONFIG.redirectEndpoint+"?slug="+encodeURIComponent(slug);
-  return safeHttps(item.destination_url)||"";
-}
+function itemUrl(item){return safeWebUrl(item.destination_url)||"";}
 function savedKey(item){return itemUrl(item)||safeText(item.title,"")+"|"+safeText(item.platform_name,"");}
 function isSavedItem(item){const key=savedKey(item);return !!key&&readLocal(STORAGE_KEYS.bookmarks).some(x=>savedKey(x)===key);}
 function toggleSavedItem(item,button){
@@ -732,7 +695,7 @@ $("voiceBtn").addEventListener("click",()=>{
   speechRecognition.onend=()=>{$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";speechRecognition=null;};
   try{speechRecognition.start();toast("تحدث الآن للبحث بالصوت");}catch(_){speechRecognition=null;$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";toast("تعذر تشغيل الميكروفون.");}
 });
-loadReviews();loadPublicStats();setInterval(loadPublicStats,15000);recordQualifiedVisit();
+loadDirectoryNavigation();loadHomeFeed();
 $("year").textContent=new Date().getFullYear();
 applyPreferences(readPreferences());
 let aqxInstallPrompt=null;
