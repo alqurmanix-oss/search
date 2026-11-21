@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#071523">
+<meta name="theme-color" content="#7046c5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="/manifest.json">
@@ -378,92 +378,8 @@ async function apiSearch(query,offset){
     })),suggestions:[]};
   }finally{clearTimeout(timer);}
 }
-function createAdCard(ad){
-  const card=document.createElement("article");card.className="ad-card";
-  const copy=document.createElement("div");copy.className="ad-copy";
-  const label=document.createElement("span");label.className="ad-label";label.textContent=safeText(ad.label,"إعلان");
-  const title=document.createElement("div");title.className="ad-title";title.textContent=safeText(ad.headline,"إعلان لدى AQX");
-  const sub=document.createElement("div");sub.className="ad-sub";sub.textContent=safeText(ad.body,"احجز مساحتك الإعلانية على شبكة AQX");
-  copy.append(label,title,sub);card.append(copy);
-  const imgUrl=safeHttps(ad.image_url);
-  if(imgUrl){const img=document.createElement("img");img.className="ad-image";img.src=imgUrl;img.alt="";img.loading="lazy";img.referrerPolicy="no-referrer";card.append(img);}
-  const target=safeHttps(ad.click_url);
-  const action=document.createElement(target?"a":"span");action.className="ad-action";action.textContent=safeText(ad.button_label,"أعلن معنا");
-  if(target){action.href=target;action.target="_blank";action.rel="noopener noreferrer sponsored";}
-  card.append(action);
-  if(ad.source_kind!=="aqx_fallback"&&ad.request_id&&ad.ad_id){
-    const mark=()=>{if(document.visibilityState==="visible")sendAdEvent(ad,"viewable_impression");};
-    if("IntersectionObserver" in window){
-      const observer=new IntersectionObserver(entries=>{
-        if(entries.some(e=>e.isIntersecting)){setTimeout(()=>{mark();observer.disconnect();},1000);}
-      },{threshold:.5});observer.observe(card);
-    }else setTimeout(mark,1000);
-    if(target)action.addEventListener("click",()=>sendAdEvent(ad,"click"),{passive:true});
-  }
-  return card;
-}
-function renderExternalTag(tag){
-  if(location.hostname!=="search.alqurmanix.com"||tag.allowed_host!=="search.alqurmanix.com"||tag.is_enabled===false)return null;
-  const code=typeof tag.script_code==="string"?tag.script_code:"";
-  if(!code||code.length>12000)return null;
-  const provider=String(tag.provider_key||"");
-  const allowedHosts=provider==="adsterra"?["https://bicea.org/"]:provider==="monetag"?["https://al5sm.com/","https://nap5k.com/","https://n6wxm.com/"]:[];
-  if(!allowedHosts.length||!allowedHosts.some(host=>code.includes(host)))return null;
-  const wrap=document.createElement("div");wrap.className="external-ad-wrap";wrap.dataset.provider=provider;
-  const key=String(tag.placement_key||"").toLowerCase();
-  let size="";
-  if(key.includes("728")||key.includes("banner"))size="728x90";
-  else if(key.includes("300")||key.includes("250"))size="300x250";
-  else if(key.includes("320")||key.includes("mobile"))size="320x50";
-  wrap.dataset.size=size;
-  const template=document.createElement("template");template.innerHTML=code;
-  const scripts=Array.from(template.content.querySelectorAll("script"));
-  template.content.querySelectorAll("script").forEach(node=>node.remove());
-  wrap.append(template.content.cloneNode(true));
-  wrap._aqxScripts=scripts;
-  return wrap;
-}
-function activateExternalTag(wrap){
-  if(!wrap||wrap.dataset.activated==="true"||location.hostname!=="search.alqurmanix.com")return;
-  wrap.dataset.activated="true";
-  const scripts=Array.isArray(wrap._aqxScripts)?wrap._aqxScripts:[];
-  scripts.forEach(source=>{
-    const src=source.getAttribute("src");
-    if(src){
-      let parsed;try{parsed=new URL(src,location.href);}catch{return;}
-      const provider=wrap.dataset.provider;
-      const allowed=provider==="adsterra"?parsed.origin==="https://bicea.org":provider==="monetag"?["https://al5sm.com","https://nap5k.com","https://n6wxm.com"].includes(parsed.origin):false;
-      if(!allowed)return;
-    }
-    const script=document.createElement("script");
-    Array.from(source.attributes).forEach(attr=>script.setAttribute(attr.name,attr.value));
-    script.text=source.textContent||"";
-    wrap.append(script);
-  });
-  delete wrap._aqxScripts;
-}
-function renderExternalAds(data){
-  if(location.hostname!=="search.alqurmanix.com")return;
-  const tags=Array.isArray(data.external_tags)?data.external_tags:[];
-  const slots={top:$("adTop"),inline:$("adInline"),bottom:$("adBottom")};
-  tags.forEach(tag=>{
-    const key=String(tag.placement_key||"").toLowerCase();
-    let target=slots.inline;
-    if(key.includes("custom-1")||key.includes("728")||key.includes("top"))target=slots.top;
-    else if(key.includes("custom-2")||key.includes("bottom")||key.includes("monetag-2"))target=slots.bottom;
-    else if(key.includes("monetag-3")||key.includes("320")||key.includes("mobile"))target=slots.bottom;
-    const frame=renderExternalTag(tag);if(frame){target.append(frame);activateExternalTag(frame);}
-  });
-}
 function renderAds(){
   ["adTop","adInline","adBottom"].forEach(id=>{const el=$(id);if(el)el.replaceChildren();});
-}
-function sendAdEvent(ad,eventType){
-  if(ad.source_kind==="aqx_fallback"||!ad.request_id||!ad.ad_id)return;
-  const payload=JSON.stringify({request_id:ad.request_id,creative_id:ad.ad_id,event_type:eventType,viewable_ms:eventType==="viewable_impression"?1000:null});
-  try{
-    fetch(AQX_CONFIG.eventEndpoint,{method:"POST",headers:{"Content-Type":"application/json","apikey":AQX_CONFIG.publishableKey},body:payload,keepalive:true}).catch(()=>{});
-  }catch(_){}
 }
 function createResult(item){
   const article=document.createElement("article");article.className="result";
